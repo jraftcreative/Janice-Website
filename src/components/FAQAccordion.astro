@@ -64,7 +64,6 @@ const { items } = Astro.props;
     });
   }
 
-  initAccordion();
   document.addEventListener('astro:page-load', initAccordion);
 </script>
 
@@ -106,6 +105,7 @@ const { items } = Astro.props;
     font-weight: 600;
     color: var(--color-dark-text);
     transition: var(--transition);
+    min-height: 48px;
   }
 
   .faq-accordion__item--active .faq-accordion__trigger {

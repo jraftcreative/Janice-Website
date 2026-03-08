@@ -9,7 +9,7 @@ const links = [
 ];
 ---
 
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" transition:persist>
   <div class="navbar__inner container">
     <a href="/" class="navbar__logo">
       <span class="navbar__logo-name">Janice Low</span>
@@ -129,7 +129,11 @@ const links = [
     flex-direction: column;
     gap: 5px;
     background: none;
-    padding: 4px;
+    padding: 10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
   }
 
   .navbar__toggle-bar {
@@ -167,6 +171,9 @@ const links = [
 
     .navbar__link {
       font-size: 1.25rem;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .navbar__toggle.open .navbar__toggle-bar:nth-child(1) {
@@ -193,22 +200,25 @@ const links = [
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
     });
 
+    function closeMenu() {
+      links?.classList.remove('open');
+      toggle?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
     toggle?.addEventListener('click', () => {
       const open = links?.classList.toggle('open');
       toggle.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
     });
 
-    // Close menu on link click (mobile)
-    links?.querySelectorAll('.navbar__link').forEach(link => {
-      link.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle?.classList.remove('open');
-        toggle?.setAttribute('aria-expanded', 'false');
-      });
+    // Close menu on any link click (mobile) — includes CTA
+    links?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
   }
 
-  initNavbar();
-  document.addEventListener('astro:after-swap', initNavbar);
+  document.addEventListener('astro:page-load', initNavbar);
 </script>
