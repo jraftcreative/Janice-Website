@@ -1,0 +1,149 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="faq-accordion">
+  {items.map((item, i) => (
+    <div class="faq-accordion__item" data-faq-item>
+      <button class="faq-accordion__trigger" data-faq-trigger aria-expanded="false" aria-controls={`faq-panel-${i}`}>
+        <span class="faq-accordion__question">{item.question}</span>
+        <span class="faq-accordion__icon" aria-hidden="true">+</span>
+      </button>
+      <div class="faq-accordion__panel" id={`faq-panel-${i}`} data-faq-panel>
+        <p class="faq-accordion__answer">{item.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  function initAccordion() {
+    const triggers = document.querySelectorAll('[data-faq-trigger]');
+
+    triggers.forEach(trigger => {
+      // Remove old listeners by cloning
+      const newTrigger = trigger.cloneNode(true) as HTMLElement;
+      trigger.parentNode?.replaceChild(newTrigger, trigger);
+
+      newTrigger.addEventListener('click', () => {
+        const item = newTrigger.closest('[data-faq-item]')!;
+        const panel = item.querySelector('[data-faq-panel]') as HTMLElement;
+        const isOpen = newTrigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all other items
+        document.querySelectorAll('[data-faq-item]').forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherTrigger = otherItem.querySelector('[data-faq-trigger]') as HTMLElement;
+            const otherPanel = otherItem.querySelector('[data-faq-panel]') as HTMLElement;
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherItem.classList.remove('faq-accordion__item--active');
+            otherPanel.style.maxHeight = '0';
+            const otherIcon = otherTrigger.querySelector('[aria-hidden]');
+            if (otherIcon) otherIcon.textContent = '+';
+          }
+        });
+
+        // Toggle current item
+        const icon = newTrigger.querySelector('[aria-hidden]');
+        if (isOpen) {
+          newTrigger.setAttribute('aria-expanded', 'false');
+          item.classList.remove('faq-accordion__item--active');
+          panel.style.maxHeight = '0';
+          if (icon) icon.textContent = '+';
+        } else {
+          newTrigger.setAttribute('aria-expanded', 'true');
+          item.classList.add('faq-accordion__item--active');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          if (icon) icon.textContent = '\u2212';
+        }
+      });
+    });
+  }
+
+  initAccordion();
+  document.addEventListener('astro:page-load', initAccordion);
+</script>
+
+<style>
+  .faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .faq-accordion__item {
+    border-radius: var(--border-radius);
+    background: var(--color-white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-left: 3px solid transparent;
+    transition: var(--transition);
+    overflow: hidden;
+  }
+
+  .faq-accordion__item--active {
+    border-left-color: var(--color-teal);
+  }
+
+  .faq-accordion__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-dark-text);
+    transition: var(--transition);
+  }
+
+  .faq-accordion__item--active .faq-accordion__trigger {
+    color: var(--color-teal);
+  }
+
+  .faq-accordion__icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-gray);
+    flex-shrink: 0;
+    transition: var(--transition);
+    line-height: 1;
+  }
+
+  .faq-accordion__item--active .faq-accordion__icon {
+    color: var(--color-teal);
+  }
+
+  .faq-accordion__item--active .faq-accordion__icon::after {
+    content: '';
+  }
+
+  .faq-accordion__panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .faq-accordion__answer {
+    padding: 0 var(--space-lg) var(--space-md);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #4A5568;
+  }
+
+  /* Toggle + / - via content */
+  .faq-accordion__item--active .faq-accordion__icon {
+    transform: rotate(0deg);
+  }
+</style>

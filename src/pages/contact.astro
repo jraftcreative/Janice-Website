@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FAQAccordion from '../components/FAQAccordion.astro';
+
+const faqItems = [
+  {
+    question: "What happens in the first consultation?",
+    answer: "We'll discuss your financial goals, current situation, and concerns. It's a no-obligation conversation to see if we're a good fit. I'll ask questions to understand where you are and where you want to be."
+  },
+  {
+    question: "How do you charge for your services?",
+    answer: "I believe in full transparency. Fees depend on the service — whether it's advisory fees, commission-based, or a combination. I'll explain all costs upfront before we begin working together."
+  },
+  {
+    question: "Do I need a minimum amount to start?",
+    answer: "No. I work with clients at all stages of their financial journey, from fresh graduates to retirees. What matters most is your willingness to plan ahead."
+  },
+  {
+    question: "How often will we meet?",
+    answer: "Typically quarterly for portfolio reviews, with ad-hoc check-ins when life events occur. I'm always reachable by phone or email between scheduled meetings."
+  },
+  {
+    question: "Are you regulated?",
+    answer: "Yes. I am a licensed financial adviser representative regulated by the Monetary Authority of Singapore (MAS). You can verify my credentials through the MAS Financial Advisers Public Register."
+  },
+  {
+    question: "Can you help with CPF and SRS planning?",
+    answer: "Absolutely. CPF optimization and SRS strategies are core parts of my wealth management approach. I'll help you maximize these powerful tools."
+  }
+];
+---
+
+<BaseLayout title="Contact" description="Get in touch with Janice Low, a licensed financial advisor in Singapore. Book a consultation to discuss your wealth management, insurance, and investment needs.">
+
+  <!-- Hero + Split Layout (single dark section) -->
+  <section class="section section--dark grid-bg contact-hero">
+    <div class="container">
+      <!-- Hero -->
+      <div class="contact-hero__text reveal">
+        <h1 class="contact-hero__title">Let's Talk About Your Future</h1>
+        <p class="contact-hero__subtitle">Whether you're just starting out or looking to optimize your wealth, I'm here to help.</p>
+      </div>
+
+      <!-- Split Layout -->
+      <div class="contact-split reveal">
+        <!-- Left: Form -->
+        <div class="contact-split__form">
+          <ContactForm />
+        </div>
+
+        <!-- Right: Info Panel -->
+        <div class="contact-split__info">
+          <!-- Book a Call -->
+          <div class="contact-info__block">
+            <div class="contact-info__heading">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-info__icon">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+              <h3>Book a Call</h3>
+            </div>
+            <p class="contact-info__text">Prefer to schedule directly?</p>
+            <a href="#" class="btn btn--outline contact-info__btn">Schedule on Calendly</a>
+          </div>
+
+          <hr class="contact-info__divider" />
+
+          <!-- Contact Details -->
+          <div class="contact-info__block">
+            <div class="contact-info__row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-info__icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Singapore</span>
+            </div>
+            <div class="contact-info__row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-info__icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <a href="mailto:hello@janicelow.sg">hello@janicelow.sg</a>
+            </div>
+            <div class="contact-info__row">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-info__icon">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <a href="tel:+6591234567">+65 9123 4567</a>
+            </div>
+          </div>
+
+          <hr class="contact-info__divider" />
+
+          <!-- Office Hours -->
+          <div class="contact-info__block">
+            <h4 class="contact-info__label">Office Hours</h4>
+            <p class="contact-info__text">Monday &ndash; Friday: 9:00 AM &ndash; 6:00 PM</p>
+            <p class="contact-info__text">Saturday: By appointment</p>
+            <p class="contact-info__text">Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section--light contact-faq">
+    <div class="container">
+      <div class="contact-faq__header reveal">
+        <h2 class="contact-faq__title">Frequently Asked Questions</h2>
+        <p class="contact-faq__subtitle">Common questions about working with a financial advisor.</p>
+      </div>
+      <div class="reveal">
+        <FAQAccordion items={faqItems} />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .contact-hero__text {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--color-gray);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── Split Layout ── */
+  .contact-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .contact-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Info Panel ── */
+  .contact-split__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .contact-info__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .contact-info__heading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .contact-info__heading h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+
+  .contact-info__icon {
+    color: var(--color-teal);
+    flex-shrink: 0;
+  }
+
+  .contact-info__text {
+    font-size: 0.95rem;
+    color: var(--color-body-dark);
+    line-height: 1.6;
+  }
+
+  .contact-info__btn {
+    align-self: flex-start;
+  }
+
+  .contact-info__divider {
+    border: none;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  .contact-info__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.95rem;
+    color: var(--color-body-dark);
+  }
+
+  .contact-info__row a {
+    color: var(--color-body-dark);
+    transition: var(--transition);
+  }
+
+  .contact-info__row a:hover {
+    color: var(--color-teal);
+  }
+
+  .contact-info__label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-teal);
+    font-weight: 700;
+  }
+
+  /* ── FAQ Section ── */
+  .contact-faq__header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact-faq__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-sm);
+    color: var(--color-dark-text);
+  }
+
+  .contact-faq__subtitle {
+    font-size: 1.05rem;
+    color: var(--color-gray);
+  }
+</style>
