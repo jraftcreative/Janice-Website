@@ -1,0 +1,183 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  /* Colors */
+  --color-navy: #0A1628;
+  --color-navy-light: #111D33;
+  --color-navy-mid: #1A2940;
+  --color-teal: #00D4AA;
+  --color-teal-dim: rgba(0, 212, 170, 0.15);
+  --color-teal-glow: rgba(0, 212, 170, 0.4);
+  --color-gold: #C9A84C;
+  --color-gold-dim: rgba(201, 168, 76, 0.15);
+  --color-light: #F8F9FA;
+  --color-gray: #94A3B8;
+  --color-white: #FFFFFF;
+  --color-dark-text: #0A1628;
+  --color-body-dark: #CBD5E1;
+
+  /* Typography */
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 72px;
+
+  /* Effects */
+  --glass-bg: rgba(26, 41, 64, 0.6);
+  --glass-border: rgba(0, 212, 170, 0.12);
+  --glass-blur: blur(16px);
+  --border-radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-dark-text);
+  background: var(--color-white);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+/* ── Utilities ── */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section--dark {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.section--light {
+  background: var(--color-light);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: var(--space-lg);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 30px var(--color-teal-dim);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.btn--primary {
+  background: var(--color-teal);
+  color: var(--color-navy);
+}
+
+.btn--primary:hover {
+  background: #00E8BB;
+  box-shadow: 0 0 24px var(--color-teal-glow);
+  transform: translateY(-2px);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-teal);
+  border: 1.5px solid var(--color-teal);
+}
+
+.btn--outline:hover {
+  background: var(--color-teal-dim);
+  transform: translateY(-2px);
+}
+
+/* ── Scroll Animations ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Grid Pattern Background ── */
+.grid-bg {
+  position: relative;
+}
+
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
