@@ -4,18 +4,18 @@
 /* ── Design Tokens ── */
 :root {
   /* Colors */
-  --color-navy: #0A1628;
-  --color-navy-light: #111D33;
-  --color-navy-mid: #1A2940;
-  --color-teal: #00D4AA;
-  --color-teal-dim: rgba(0, 212, 170, 0.15);
-  --color-teal-glow: rgba(0, 212, 170, 0.4);
-  --color-gold: #C9A84C;
-  --color-gold-dim: rgba(201, 168, 76, 0.15);
-  --color-light: #F8F9FA;
-  --color-gray: #94A3B8;
+  --color-navy: #1B365D;
+  --color-navy-light: #223F6A;
+  --color-navy-mid: #2A4D7F;
+  --color-accent: #B8923F;
+  --color-accent-dim: rgba(184, 146, 63, 0.12);
+  --color-accent-hover: #CBA44D;
+  --color-gold: #B8923F;
+  --color-gold-dim: rgba(184, 146, 63, 0.12);
+  --color-light: #F7F5F2;
+  --color-gray: #6B7280;
   --color-white: #FFFFFF;
-  --color-dark-text: #0A1628;
+  --color-dark-text: #1F2937;
   --color-body-dark: #CBD5E1;
 
   /* Typography */
@@ -37,8 +37,8 @@
   --nav-height: 72px;
 
   /* Effects */
-  --glass-bg: rgba(26, 41, 64, 0.6);
-  --glass-border: rgba(0, 212, 170, 0.12);
+  --glass-bg: rgba(27, 54, 93, 0.5);
+  --glass-border: rgba(184, 146, 63, 0.15);
   --glass-blur: blur(16px);
   --border-radius: 12px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -118,8 +118,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card:hover {
-  border-color: var(--color-teal);
-  box-shadow: 0 0 30px var(--color-teal-dim);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 30px var(--color-accent-dim);
 }
 
 .btn {
@@ -136,24 +136,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn--primary {
-  background: var(--color-teal);
-  color: var(--color-navy);
+  background: var(--color-accent);
+  color: var(--color-white);
 }
 
 .btn--primary:hover {
-  background: #00E8BB;
-  box-shadow: 0 0 24px var(--color-teal-glow);
+  background: var(--color-accent-hover);
+  box-shadow: 0 4px 16px rgba(184, 146, 63, 0.3);
   transform: translateY(-2px);
 }
 
 .btn--outline {
   background: transparent;
-  color: var(--color-teal);
-  border: 1.5px solid var(--color-teal);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
 }
 
 .btn--outline:hover {
-  background: var(--color-teal-dim);
+  background: var(--color-accent-dim);
   transform: translateY(-2px);
 }
 
@@ -179,8 +179,8 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(184, 146, 63, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 146, 63, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
 }
