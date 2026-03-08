@@ -1,0 +1,118 @@
+---
+const steps = [
+  { number: 1, title: 'Discovery', description: 'We discuss your goals, timeline, and risk appetite' },
+  { number: 2, title: 'Analysis', description: 'I analyze your current finances and identify gaps' },
+  { number: 3, title: 'Strategy', description: 'A personalized plan tailored to your life stage' },
+  { number: 4, title: 'Ongoing Review', description: 'Regular check-ins to keep you on track' },
+];
+---
+
+<section class="section section--light process-section">
+  <div class="container">
+    <h2 class="process__title reveal">How It Works</h2>
+    <div class="process__flow reveal">
+      <div class="process__line" aria-hidden="true"></div>
+      {steps.map((step) => (
+        <div class="process__step">
+          <div class="process__circle">{step.number}</div>
+          <h3 class="process__step-title">{step.title}</h3>
+          <p class="process__step-desc">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    background: var(--color-light);
+  }
+
+  .process__title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    color: var(--color-dark-text);
+    margin-bottom: var(--space-xl);
+  }
+
+  .process__flow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    gap: var(--space-md);
+  }
+
+  .process__line {
+    position: absolute;
+    top: 24px;
+    left: 48px;
+    right: 48px;
+    height: 2px;
+    background: var(--color-teal);
+    opacity: 0.4;
+  }
+
+  .process__step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .process__circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-teal);
+    background: var(--color-light);
+    margin-bottom: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  .process__step-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-dark-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .process__step-desc {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+    max-width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    .process__flow {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .process__line {
+      top: 24px;
+      bottom: 24px;
+      left: 50%;
+      right: auto;
+      width: 2px;
+      height: auto;
+      transform: translateX(-50%);
+    }
+
+    .process__step-desc {
+      max-width: 280px;
+    }
+  }
+</style>
