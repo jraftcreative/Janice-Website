@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+---
+
+<BaseLayout title="Insights" description="Expert perspectives on wealth management, insurance, and investing in Singapore. Financial guides and tips from Janice Low.">
+
+  <!-- Hero -->
+  <section class="section section--dark grid-bg insights-hero">
+    <div class="container">
+      <div class="insights-hero__content reveal">
+        <h1 class="insights-hero__title">Insights &amp; Financial Guides</h1>
+        <p class="insights-hero__subtitle">Expert perspectives on wealth management, insurance, and investing in Singapore.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter -->
+  <section class="section insights-filters">
+    <div class="container">
+      <div class="insights-filters__row reveal">
+        <button class="filter-pill filter-pill--active">All</button>
+        <button class="filter-pill">Wealth</button>
+        <button class="filter-pill">Insurance</button>
+        <button class="filter-pill">Investing</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Article -->
+  <section class="section section--light insights-featured">
+    <div class="container reveal">
+      <ArticleCard
+        category="Wealth"
+        title="5 CPF Strategies Every Singaporean Should Know"
+        excerpt="Maximize your CPF contributions with these proven strategies for retirement planning, housing, and healthcare in Singapore."
+        date="Feb 28, 2026"
+        readTime="8 min read"
+        featured={true}
+      />
+    </div>
+  </section>
+
+  <!-- Article Grid -->
+  <section class="section insights-grid-section">
+    <div class="container">
+      <div class="insights-grid reveal">
+        <ArticleCard
+          category="Insurance"
+          title="How Much Insurance Do You Really Need?"
+          excerpt="A practical framework for determining the right coverage amount based on your life stage and responsibilities."
+          date="Feb 20, 2026"
+          readTime="6 min read"
+        />
+        <ArticleCard
+          category="Investing"
+          title="Building a Recession-Proof Portfolio in 2026"
+          excerpt="Diversification strategies and asset allocation principles to weather economic uncertainty."
+          date="Feb 14, 2026"
+          readTime="7 min read"
+        />
+        <ArticleCard
+          category="Wealth"
+          title="Estate Planning Essentials for Young Families"
+          excerpt="Why it's never too early to plan for your family's future and the key documents you need."
+          date="Feb 7, 2026"
+          readTime="5 min read"
+        />
+        <ArticleCard
+          category="Wealth"
+          title="Understanding Singapore's Tax Relief Options"
+          excerpt="A comprehensive guide to tax deductions and reliefs available to Singapore residents."
+          date="Jan 30, 2026"
+          readTime="6 min read"
+        />
+        <ArticleCard
+          category="Investing"
+          title="SRS Account: Your Secret Retirement Weapon"
+          excerpt="How the Supplementary Retirement Scheme can reduce your tax bill while building retirement savings."
+          date="Jan 22, 2026"
+          readTime="5 min read"
+        />
+        <ArticleCard
+          category="Investing"
+          title="Why Asset Allocation Matters More Than Stock Picking"
+          excerpt="The evidence-based case for focusing on portfolio structure over individual stock selection."
+          date="Jan 15, 2026"
+          readTime="7 min read"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="section section--dark insights-newsletter">
+    <div class="container">
+      <div class="insights-newsletter__content reveal">
+        <h2 class="insights-newsletter__title">Get Weekly Insights Delivered</h2>
+        <p class="insights-newsletter__subtitle">Join 2,000+ Singaporeans who receive practical financial tips every Thursday.</p>
+        <form class="insights-newsletter__form" action="#">
+          <input
+            type="email"
+            class="insights-newsletter__input"
+            placeholder="Enter your email"
+            aria-label="Email address"
+          />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="insights-newsletter__privacy">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .insights-hero {
+    text-align: center;
+    padding: var(--space-3xl) 0 var(--space-xl);
+  }
+
+  .insights-hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .insights-hero__subtitle {
+    color: var(--color-gray);
+    font-size: 1.15rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── Filters ── */
+  .insights-filters {
+    padding: var(--space-lg) 0;
+  }
+
+  .insights-filters__row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .filter-pill {
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--color-navy);
+    border: 1.5px solid var(--color-navy);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-body);
+  }
+
+  .filter-pill:hover {
+    background: var(--color-teal-dim);
+    border-color: var(--color-teal);
+    color: var(--color-teal);
+  }
+
+  .filter-pill--active {
+    background: var(--color-teal);
+    color: var(--color-navy);
+    border-color: var(--color-teal);
+  }
+
+  .filter-pill--active:hover {
+    background: var(--color-teal);
+    color: var(--color-navy);
+  }
+
+  /* ── Featured ── */
+  .insights-featured {
+    padding-top: 0;
+    padding-bottom: var(--space-sm);
+  }
+
+  /* ── Article Grid ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  /* ── Newsletter ── */
+  .insights-newsletter__content {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .insights-newsletter__title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .insights-newsletter__subtitle {
+    color: var(--color-gray);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .insights-newsletter__form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 480px;
+    margin: 0 auto var(--space-sm);
+  }
+
+  .insights-newsletter__input {
+    flex: 1;
+    padding: 0.875rem 1.25rem;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    transition: var(--transition);
+  }
+
+  .insights-newsletter__input::placeholder {
+    color: var(--color-gray);
+  }
+
+  .insights-newsletter__input:focus {
+    outline: none;
+    border-color: var(--color-teal);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .insights-newsletter__privacy {
+    color: var(--color-gray);
+    font-size: 0.8rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .insights-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .insights-newsletter__form {
+      flex-direction: column;
+    }
+  }
+</style>

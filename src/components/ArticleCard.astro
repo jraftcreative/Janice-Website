@@ -1,0 +1,116 @@
+---
+interface Props {
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  featured?: boolean;
+}
+
+const { title, excerpt, category, date, readTime, featured = false } = Astro.props;
+
+const categoryClass = category.toLowerCase();
+---
+
+<article class:list={['article-card', { 'article-card--featured': featured }]}>
+  <span class:list={['article-card__category', `article-card__category--${categoryClass}`]}>
+    {category}
+  </span>
+  <h3 class="article-card__title">
+    <a href="#">{title}</a>
+  </h3>
+  <p class="article-card__excerpt">{excerpt}</p>
+  <div class="article-card__meta">
+    <span>{date}</span>
+    <span class="article-card__dot" aria-hidden="true">&middot;</span>
+    <span>{readTime}</span>
+  </div>
+</article>
+
+<style>
+  .article-card {
+    background: var(--color-white);
+    border: 1px solid #E2E8F0;
+    border-radius: var(--border-radius);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: var(--transition);
+  }
+
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 22, 40, 0.1);
+  }
+
+  .article-card--featured {
+    grid-column: 1 / -1;
+    padding: var(--space-lg);
+  }
+
+  .article-card--featured .article-card__title {
+    font-size: 1.75rem;
+  }
+
+  .article-card__category {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .article-card__category--wealth {
+    background: var(--color-teal-dim);
+    color: var(--color-teal);
+  }
+
+  .article-card__category--insurance {
+    background: var(--color-gold-dim);
+    color: var(--color-gold);
+  }
+
+  .article-card__category--investing {
+    background: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .article-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .article-card__title a {
+    color: var(--color-navy);
+    transition: var(--transition);
+  }
+
+  .article-card__title a:hover {
+    color: var(--color-teal);
+  }
+
+  .article-card__excerpt {
+    color: var(--color-gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-gray);
+  }
+
+  .article-card__dot {
+    font-size: 1rem;
+  }
+</style>
