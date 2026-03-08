@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://janicelow.sg',
+  site: 'https://jraftcreative.github.io',
+  base: '/Janice-Website',
   output: 'static',
-  adapter: vercel(),
   integrations: [sitemap()],
 });
