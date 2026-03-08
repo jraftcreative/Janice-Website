@@ -1,5 +1,6 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer class="footer section--dark">
@@ -21,19 +22,19 @@ const year = new Date().getFullYear();
       <div class="footer__nav">
         <h4 class="footer__heading">Quick Links</h4>
         <ul class="footer__list">
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/insights">Insights</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href={`${base}about`}>About</a></li>
+          <li><a href={`${base}services`}>Services</a></li>
+          <li><a href={`${base}insights`}>Insights</a></li>
+          <li><a href={`${base}contact`}>Contact</a></li>
         </ul>
       </div>
 
       <div class="footer__nav">
         <h4 class="footer__heading">Services</h4>
         <ul class="footer__list">
-          <li><a href="/services#wealth">Wealth Management</a></li>
-          <li><a href="/services#insurance">Insurance Advisory</a></li>
-          <li><a href="/services#investments">Investment Management</a></li>
+          <li><a href={`${base}services#wealth`}>Wealth Management</a></li>
+          <li><a href={`${base}services#insurance`}>Insurance Advisory</a></li>
+          <li><a href={`${base}services#investments`}>Investment Management</a></li>
         </ul>
       </div>
 
