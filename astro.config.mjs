@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://jraftcreative.github.io',
-  base: '/Janice-Website',
+  base: '/Janice-Website/',
   output: 'static',
   integrations: [sitemap()],
 });
