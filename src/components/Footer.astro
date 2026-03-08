@@ -1,0 +1,166 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer section--dark">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__logo">Janice Low</span>
+        <p class="footer__tagline">Helping Singaporeans build, protect, and grow their wealth with clarity and confidence.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn" class="footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="footer__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__nav">
+        <h4 class="footer__heading">Quick Links</h4>
+        <ul class="footer__list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/insights">Insights</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav">
+        <h4 class="footer__heading">Services</h4>
+        <ul class="footer__list">
+          <li><a href="/services#wealth">Wealth Management</a></li>
+          <li><a href="/services#insurance">Insurance Advisory</a></li>
+          <li><a href="/services#investments">Investment Management</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__nav">
+        <h4 class="footer__heading">Contact</h4>
+        <ul class="footer__list">
+          <li>Singapore</li>
+          <li><a href="mailto:hello@janicelow.sg">hello@janicelow.sg</a></li>
+          <li><a href="tel:+6591234567">+65 9123 4567</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__disclaimer">
+        Janice Low is a licensed financial adviser representative regulated by the Monetary Authority of Singapore (MAS).
+        The information on this website is for general informational purposes only and does not constitute financial advice.
+        Please consult a qualified financial advisor before making any investment decisions.
+      </p>
+      <p class="footer__copyright">&copy; {year} Janice Low. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--space-2xl) 0 var(--space-lg);
+    border-top: 1px solid var(--glass-border);
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  .footer__logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-white);
+  }
+
+  .footer__tagline {
+    margin-top: var(--space-sm);
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    max-width: 300px;
+  }
+
+  .footer__social {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  .footer__social-link {
+    color: var(--color-gray);
+    transition: var(--transition);
+  }
+
+  .footer__social-link:hover {
+    color: var(--color-teal);
+  }
+
+  .footer__heading {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer__list a,
+  .footer__list li {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    transition: var(--transition);
+  }
+
+  .footer__list a:hover {
+    color: var(--color-teal);
+  }
+
+  .footer__bottom {
+    padding-top: var(--space-lg);
+    text-align: center;
+  }
+
+  .footer__disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    max-width: 700px;
+    margin: 0 auto var(--space-sm);
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  .footer__copyright {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+  }
+
+  @media (max-width: 768px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
