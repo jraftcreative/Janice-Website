@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://janicelow.sg/sitemap-index.xml
