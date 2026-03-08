@@ -1,12 +1,18 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroHome from '../components/HeroHome.astro';
+import StatsCounter from '../components/StatsCounter.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import WhyJanice from '../components/WhyJanice.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 ---
 
 <BaseLayout title="Home">
-  <section class="section section--dark" style="min-height: 60vh; display: flex; align-items: center;">
-    <div class="container">
-      <h1>Janice Low — Financial Advisor</h1>
-      <p style="color: var(--color-gray); margin-top: 1rem;">Site under construction.</p>
-    </div>
-  </section>
+  <HeroHome />
+  <StatsCounter />
+  <ServiceCards />
+  <WhyJanice />
+  <Testimonials />
+  <CtaBanner />
 </BaseLayout>

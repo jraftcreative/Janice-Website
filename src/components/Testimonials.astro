@@ -1,0 +1,122 @@
+---
+const testimonials = [
+  { quote: 'Janice helped me optimize my CPF and build a retirement plan I actually feel confident about.', name: 'S.T.' },
+  { quote: 'Her insurance review saved my family thousands while improving our coverage.', name: 'M.C.' },
+  { quote: 'Clear, honest advice without the hard sell. Refreshing in this industry.', name: 'R.W.' },
+  { quote: 'She restructured my portfolio and I\'ve seen consistent, steady growth since.', name: 'K.L.' },
+  { quote: 'Finally found an advisor who takes the time to explain everything clearly.', name: 'A.N.' },
+];
+---
+
+<section class="section section--dark testimonials-section">
+  <div class="container">
+    <h2 class="testimonials__title reveal">What Clients Say</h2>
+  </div>
+  <div class="testimonials__track-wrap">
+    <div class="testimonials__track">
+      {[...testimonials, ...testimonials].map((t) => (
+        <div class="testimonials__card">
+          <p class="testimonials__quote">&ldquo;{t.quote}&rdquo;</p>
+          <div class="testimonials__stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-gold)">
+                <path d="M8 0l2.47 4.94L16 5.77l-4 3.86.94 5.47L8 12.67 3.06 15.1 4 9.63 0 5.77l5.53-.83z" />
+              </svg>
+            ))}
+          </div>
+          <div class="testimonials__author">
+            <span class="testimonials__initials">{t.name}</span>
+            <span class="testimonials__name">{t.name}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials__title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .testimonials__track-wrap {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .testimonials__track {
+    display: flex;
+    gap: var(--space-md);
+    animation: scroll-left 40s linear infinite;
+    width: max-content;
+  }
+
+  .testimonials__track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .testimonials__card {
+    flex-shrink: 0;
+    width: 340px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .testimonials__quote {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-body-dark);
+    flex-grow: 1;
+  }
+
+  .testimonials__stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .testimonials__initials {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-teal-dim);
+    color: var(--color-teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .testimonials__name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-white);
+  }
+
+  @media (max-width: 480px) {
+    .testimonials__card {
+      width: 280px;
+    }
+  }
+</style>

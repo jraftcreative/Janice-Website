@@ -1,0 +1,169 @@
+---
+---
+
+<section class="hero grid-bg">
+  <div class="hero__particles">
+    <span class="particle particle--1"></span>
+    <span class="particle particle--2"></span>
+    <span class="particle particle--3"></span>
+    <span class="particle particle--4"></span>
+    <span class="particle particle--5"></span>
+  </div>
+
+  <div class="container hero__content">
+    <p class="hero__eyebrow">Licensed Financial Advisor &middot; Singapore</p>
+    <h1 class="hero__headline">
+      Your Wealth,<br />
+      <span class="hero__gradient">Engineered for Growth</span>
+    </h1>
+    <div class="hero__typing">
+      <span class="hero__typing-text" id="typing-text"></span><span class="hero__cursor">|</span>
+    </div>
+    <div class="hero__cta">
+      <a href="/contact" class="btn btn--primary">Book a Free Consultation</a>
+      <a href="/services" class="btn btn--outline">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-navy);
+    color: var(--color-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero__particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--color-teal);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .particle--1 { top: 15%; left: 10%; animation-delay: 0s; }
+  .particle--2 { top: 25%; left: 80%; animation-delay: 1.2s; }
+  .particle--3 { top: 60%; left: 20%; animation-delay: 2.4s; }
+  .particle--4 { top: 70%; left: 70%; animation-delay: 3.6s; }
+  .particle--5 { top: 40%; left: 50%; animation-delay: 4.8s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+    50% { transform: translateY(-20px) scale(1.3); opacity: 0.9; }
+  }
+
+  .hero__content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-mono);
+    font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+    color: var(--color-teal);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__gradient {
+    background: linear-gradient(135deg, var(--color-teal), #00E8BB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__typing {
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-gray);
+    min-height: 2rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero__cursor {
+    animation: blink 1s step-end infinite;
+    color: var(--color-teal);
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script>
+  function initTyping() {
+    const el = document.getElementById('typing-text');
+    if (!el) return;
+
+    const phrases = [
+      'Wealth Management',
+      'Insurance Advisory',
+      'Investment Management',
+      'Retirement Planning',
+      'Estate Planning',
+    ];
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function tick() {
+      const current = phrases[phraseIndex];
+
+      if (!deleting) {
+        el.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+        setTimeout(tick, 80);
+      } else {
+        el.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, 400);
+          return;
+        }
+        setTimeout(tick, 40);
+      }
+    }
+
+    el.textContent = '';
+    tick();
+  }
+
+  document.addEventListener('astro:page-load', initTyping);
+</script>

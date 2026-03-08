@@ -1,0 +1,120 @@
+---
+const stats = [
+  { value: 15, suffix: '+', label: 'Years Experience' },
+  { value: 500, suffix: '+', label: 'Clients Served' },
+  { value: 120, prefix: '$', suffix: 'M+', label: 'Assets Managed' },
+  { value: 98, suffix: '%', label: 'Client Satisfaction' },
+];
+---
+
+<section class="section section--light">
+  <div class="container">
+    <div class="stats reveal" id="stats-counter">
+      {stats.map((stat) => (
+        <div class="stats__item">
+          <span class="stats__accent"></span>
+          <span
+            class="stats__number"
+            data-target={stat.value}
+            data-prefix={stat.prefix || ''}
+            data-suffix={stat.suffix}
+          >
+            {stat.prefix || ''}{0}{stat.suffix}
+          </span>
+          <span class="stats__label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stats__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+
+  .stats__accent {
+    width: 40px;
+    height: 3px;
+    background: var(--color-teal);
+    border-radius: 2px;
+    margin-bottom: var(--space-xs);
+  }
+
+  .stats__number {
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--color-navy);
+  }
+
+  .stats__label {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  function initCounters() {
+    const counters = document.querySelectorAll('.stats__number');
+    let animated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          counters.forEach(animateCounter);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsEl = document.getElementById('stats-counter');
+    if (statsEl) observer.observe(statsEl);
+  }
+
+  function animateCounter(el: Element) {
+    const target = parseInt((el as HTMLElement).dataset.target || '0');
+    const prefix = (el as HTMLElement).dataset.prefix || '';
+    const suffix = (el as HTMLElement).dataset.suffix || '';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = `${prefix}${current}${suffix}`;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  document.addEventListener('astro:page-load', initCounters);
+</script>

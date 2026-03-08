@@ -1,0 +1,139 @@
+---
+const differentiators = [
+  {
+    title: 'MAS Licensed',
+    desc: 'Fully regulated by the Monetary Authority of Singapore',
+  },
+  {
+    title: 'Personalized Strategies',
+    desc: 'No cookie-cutter plans — every recommendation fits your unique situation',
+  },
+  {
+    title: 'Transparent Fees',
+    desc: 'Clear, upfront pricing with no hidden charges or surprises',
+  },
+  {
+    title: 'Ongoing Support',
+    desc: 'Regular reviews and always available when you need guidance',
+  },
+];
+---
+
+<section class="section section--light">
+  <div class="container">
+    <h2 class="why__title reveal">Why Work With Me</h2>
+    <div class="why__grid">
+      <div class="why__list">
+        {differentiators.map((d) => (
+          <div class="why__item reveal">
+            <div class="why__check">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 12 9 17 20 6" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="why__item-title">{d.title}</h3>
+              <p class="why__item-desc">{d.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="why__photo-wrap reveal">
+        <div class="why__photo-placeholder">
+          <span>Photo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why__title {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    margin-bottom: var(--space-xl);
+    color: var(--color-navy);
+  }
+
+  .why__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .why__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .why__photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .why__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .why__item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .why__check {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-teal-dim);
+    color: var(--color-teal);
+    border-radius: 50%;
+    margin-top: 2px;
+  }
+
+  .why__item-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    margin-bottom: 0.25rem;
+  }
+
+  .why__item-desc {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+  }
+
+  .why__photo-placeholder {
+    width: 300px;
+    height: 400px;
+    background: var(--color-light);
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .why__photo-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: calc(var(--border-radius) + 3px);
+    background: linear-gradient(135deg, var(--color-teal), var(--color-gold));
+    z-index: -1;
+  }
+</style>
