@@ -5,28 +5,28 @@ import FAQAccordion from '../components/FAQAccordion.astro';
 
 const faqItems = [
   {
-    question: "What happens in the first consultation?",
-    answer: "We'll discuss your financial goals, current situation, and concerns. It's a no-obligation conversation to see if we're a good fit. I'll ask questions to understand where you are and where you want to be."
+    question: "What happens in the first meeting?",
+    answer: "Honestly, we just talk. You tell me what's going on — maybe you just got married, maybe you're thinking about retirement, maybe you have no idea where to start. I'll ask some questions about your income, CPF, any existing policies, and what keeps you up at night financially. No pressure, no obligations. If we're a good fit, great. If not, no hard feelings."
   },
   {
-    question: "How do you charge for your services?",
-    answer: "I believe in full transparency. Fees depend on the service — whether it's advisory fees, commission-based, or a combination. I'll explain all costs upfront before we begin working together."
+    question: "How do you get paid?",
+    answer: "Depends on the service. For insurance, I earn commissions from the insurer (not from you). For investment advisory, it's typically a small annual fee based on assets. Either way, I'll tell you exactly how I'm compensated before we start — I think that's just basic respect."
   },
   {
-    question: "Do I need a minimum amount to start?",
-    answer: "No. I work with clients at all stages of their financial journey, from fresh graduates to retirees. What matters most is your willingness to plan ahead."
+    question: "Do I need a lot of money to work with you?",
+    answer: "Nope. Some of my clients are fresh grads just starting to save; others are retirees managing a nest egg. There's no minimum. If you're serious about getting your finances sorted, that's enough for me."
   },
   {
     question: "How often will we meet?",
-    answer: "Typically quarterly for portfolio reviews, with ad-hoc check-ins when life events occur. I'm always reachable by phone or email between scheduled meetings."
+    answer: "I do quarterly reviews for most clients — we'll go through your portfolio, check if anything's changed in your life, and adjust the plan if needed. But you don't have to wait for a scheduled meeting. I'm on WhatsApp and email, and I actually reply."
   },
   {
     question: "Are you regulated?",
-    answer: "Yes. I am a licensed financial adviser representative regulated by the Monetary Authority of Singapore (MAS). You can verify my credentials through the MAS Financial Advisers Public Register."
+    answer: "Yes — I'm a licensed financial adviser representative under MAS (the Monetary Authority of Singapore). You can look me up on the MAS Financial Advisers Public Register anytime. I'd actually encourage you to do that with any advisor you're considering."
   },
   {
-    question: "Can you help with CPF and SRS planning?",
-    answer: "Absolutely. CPF optimization and SRS strategies are core parts of my wealth management approach. I'll help you maximize these powerful tools."
+    question: "Can you help with CPF and SRS?",
+    answer: "That's a big part of what I do. A lot of clients come to me specifically for CPF optimization — things like SA top-ups, OA-to-SA transfers, or figuring out when to start CPF LIFE payouts. For SRS, I help you pick the right investments inside the account so your money actually grows instead of sitting there earning almost nothing."
   }
 ];
 ---
@@ -38,8 +38,8 @@ const faqItems = [
     <div class="container">
       <!-- Hero -->
       <div class="contact-hero__text reveal">
-        <h1 class="contact-hero__title">Let's Talk About Your Future</h1>
-        <p class="contact-hero__subtitle">Whether you're just starting out or looking to optimize your wealth, I'm here to help.</p>
+        <h1 class="contact-hero__title">Let's Have a Conversation</h1>
+        <p class="contact-hero__subtitle">No pitch deck, no pressure. Just tell me what's on your mind and we'll go from there.</p>
       </div>
 
       <!-- Split Layout -->
@@ -111,7 +111,7 @@ const faqItems = [
     <div class="container">
       <div class="contact-faq__header reveal">
         <h2 class="contact-faq__title">Frequently Asked Questions</h2>
-        <p class="contact-faq__subtitle">Common questions about working with a financial advisor.</p>
+        <p class="contact-faq__subtitle">Things people usually ask before the first meeting.</p>
       </div>
       <div class="reveal">
         <FAQAccordion items={faqItems} />

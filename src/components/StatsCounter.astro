@@ -1,9 +1,9 @@
 ---
 const stats = [
-  { value: 15, suffix: '+', label: 'Years Experience' },
-  { value: 500, suffix: '+', label: 'Clients Served' },
-  { value: 120, prefix: '$', suffix: 'M+', label: 'Assets Managed' },
-  { value: 98, suffix: '%', label: 'Client Satisfaction' },
+  { value: 15, suffix: '+', label: 'Years in Singapore' },
+  { value: 500, suffix: '+', label: 'Clients & Families' },
+  { value: 120, prefix: '$', suffix: 'M+', label: 'Assets Under Advice' },
+  { value: 98, suffix: '%', label: 'Client Retention' },
 ];
 ---
 
@@ -54,6 +54,7 @@ const stats = [
     flex-direction: column;
     align-items: center;
     gap: var(--space-xs);
+    padding: var(--space-md) var(--space-sm);
   }
 
   .stats__accent {
@@ -72,9 +73,10 @@ const stats = [
   }
 
   .stats__label {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--color-gray);
     font-weight: 500;
+    letter-spacing: 0.01em;
   }
 </style>
 
