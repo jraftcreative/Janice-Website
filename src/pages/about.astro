@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+---
+
+<BaseLayout title="About" description="Learn about Janice Low — a licensed financial advisor in Singapore with over 15 years of experience helping families and individuals navigate their financial futures.">
+
+  <!-- Hero -->
+  <section class="section section--dark grid-bg about-hero">
+    <div class="container about-hero__grid">
+      <div class="about-hero__text reveal">
+        <h1 class="about-hero__title">About Janice</h1>
+        <p class="about-hero__subtitle">Licensed Financial Advisor &middot; Singapore</p>
+      </div>
+      <div class="about-hero__photo-wrap reveal">
+        <div class="about-hero__photo">Photo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section section--light about-story">
+    <div class="container about-story__inner reveal">
+      <h2 class="about-story__title">My Journey</h2>
+      <p>With over 15 years in Singapore's financial services industry, I've helped hundreds of families and individuals navigate their financial futures with confidence. My journey began in banking, where I quickly realized that most people needed personalized guidance — not generic products.</p>
+      <p>Today, I run an independent practice focused on one thing: helping you make informed financial decisions. Whether you're planning for retirement, protecting your family, or growing your investments, I bring clarity to complexity.</p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <Timeline />
+
+  <!-- Philosophy -->
+  <section class="section section--dark about-philosophy">
+    <div class="container">
+      <div class="glass-card about-philosophy__card reveal">
+        <span class="about-philosophy__quote-mark" aria-hidden="true">&ldquo;</span>
+        <blockquote class="about-philosophy__quote">
+          I believe financial planning should be simple, transparent, and deeply personal. My role isn't to sell — it's to listen, understand, and guide you toward decisions that align with your life goals.
+        </blockquote>
+        <cite class="about-philosophy__cite">— Janice Low</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="section section--light about-credentials">
+    <div class="container">
+      <h2 class="about-credentials__title reveal">Credentials &amp; Qualifications</h2>
+      <div class="about-credentials__grid">
+        <div class="about-credentials__card reveal">
+          <span class="about-credentials__abbr">CFP</span>
+          <h3>Certified Financial Planner</h3>
+          <p>Internationally recognized standard of excellence in financial planning</p>
+        </div>
+        <div class="about-credentials__card reveal">
+          <span class="about-credentials__abbr">ChFC</span>
+          <h3>Chartered Financial Consultant</h3>
+          <p>Advanced financial planning designation covering comprehensive strategies</p>
+        </div>
+        <div class="about-credentials__card reveal">
+          <span class="about-credentials__abbr">MAS</span>
+          <h3>MAS Representative</h3>
+          <p>Licensed and regulated by the Monetary Authority of Singapore</p>
+        </div>
+        <div class="about-credentials__card reveal">
+          <span class="about-credentials__abbr">MDRT</span>
+          <h3>Million Dollar Round Table</h3>
+          <p>Member of the premier association of financial professionals worldwide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Touch -->
+  <section class="section section--dark about-personal">
+    <div class="container about-personal__inner reveal">
+      <h2 class="about-personal__title">Beyond the Numbers</h2>
+      <p>When I'm not helping clients plan their financial futures, you'll find me exploring Singapore's food scene, hiking at MacRitchie Reservoir, or volunteering with financial literacy programs for underprivileged youth.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaBanner />
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .about-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  .about-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-hero__subtitle {
+    font-family: var(--font-mono);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--color-teal);
+  }
+
+  .about-hero__photo {
+    width: 280px;
+    height: 360px;
+    border-radius: var(--border-radius);
+    background: var(--color-navy-mid);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--color-gray);
+    position: relative;
+  }
+
+  .about-hero__photo-wrap {
+    position: relative;
+    border-radius: var(--border-radius);
+    padding: 2px;
+    background: linear-gradient(135deg, var(--color-teal), var(--color-teal-glow));
+  }
+
+  @media (max-width: 768px) {
+    .about-hero__grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .about-hero__photo-wrap {
+      margin: 0 auto;
+    }
+
+    .about-hero__photo {
+      width: 220px;
+      height: 280px;
+    }
+  }
+
+  /* ── Story ── */
+  .about-story__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .about-story__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-lg);
+    color: var(--color-dark-text);
+  }
+
+  .about-story__inner p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4A5568;
+    margin-bottom: var(--space-md);
+  }
+
+  /* ── Philosophy ── */
+  .about-philosophy__card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: var(--space-xl);
+    position: relative;
+  }
+
+  .about-philosophy__quote-mark {
+    font-size: 5rem;
+    font-family: Georgia, serif;
+    color: var(--color-teal);
+    line-height: 1;
+    display: block;
+    margin-bottom: var(--space-sm);
+    opacity: 0.6;
+  }
+
+  .about-philosophy__quote {
+    font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--color-body-dark);
+    font-style: italic;
+    border: none;
+    padding: 0;
+    margin: 0 0 var(--space-lg);
+  }
+
+  .about-philosophy__cite {
+    font-family: var(--font-mono);
+    font-style: normal;
+    color: var(--color-teal);
+    font-size: 1rem;
+  }
+
+  /* ── Credentials ── */
+  .about-credentials__title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-xl);
+    color: var(--color-dark-text);
+  }
+
+  .about-credentials__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+  }
+
+  .about-credentials__card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    border-top: 3px solid var(--color-teal);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+  }
+
+  .about-credentials__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-credentials__abbr {
+    font-family: var(--font-mono);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-credentials__card h3 {
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+    color: var(--color-dark-text);
+  }
+
+  .about-credentials__card p {
+    font-size: 0.9rem;
+    color: #64748B;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .about-credentials__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-credentials__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ── Personal Touch ── */
+  .about-personal__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .about-personal__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-md);
+  }
+
+  .about-personal__inner p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-body-dark);
+  }
+</style>

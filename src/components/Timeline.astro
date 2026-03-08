@@ -1,0 +1,153 @@
+---
+const milestones = [
+  { year: '2009', title: 'Career Beginnings', description: 'Started in financial services at a leading Singapore bank' },
+  { year: '2012', title: 'CFP Certification', description: 'Earned the Certified Financial Planner designation' },
+  { year: '2015', title: 'Senior Advisory Role', description: 'Joined a top-tier advisory firm as Senior Financial Consultant' },
+  { year: '2018', title: 'MDRT Qualification', description: 'Achieved Million Dollar Round Table recognition' },
+  { year: '2021', title: 'Independent Practice', description: 'Founded my own advisory practice for truly client-first service' },
+  { year: '2024', title: '500+ Clients', description: 'Reached the milestone of 500 clients served across Singapore' },
+];
+---
+
+<section class="section section--dark grid-bg timeline-section">
+  <div class="container">
+    <h2 class="timeline-title reveal">Career Milestones</h2>
+    <div class="timeline">
+      {milestones.map((m, i) => (
+        <div class={`timeline-entry ${i % 2 === 0 ? 'timeline-entry--left' : 'timeline-entry--right'} reveal`}>
+          <div class="timeline-entry__content glass-card">
+            <span class="timeline-entry__year">{m.year}</span>
+            <h3 class="timeline-entry__title">{m.title}</h3>
+            <p class="timeline-entry__desc">{m.description}</p>
+          </div>
+          <div class="timeline-entry__dot"></div>
+        </div>
+      ))}
+      <div class="timeline-line" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-teal);
+    transform: translateX(-50%);
+  }
+
+  .timeline-entry {
+    position: relative;
+    width: 50%;
+    padding: 0 var(--space-lg) var(--space-xl);
+  }
+
+  .timeline-entry--left {
+    left: 0;
+    text-align: right;
+    padding-right: var(--space-xl);
+  }
+
+  .timeline-entry--right {
+    left: 50%;
+    text-align: left;
+    padding-left: var(--space-xl);
+  }
+
+  .timeline-entry__dot {
+    position: absolute;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    border: 3px solid var(--color-navy);
+    box-shadow: 0 0 12px var(--color-teal-glow);
+    z-index: 1;
+  }
+
+  .timeline-entry--left .timeline-entry__dot {
+    right: calc(-7px);
+  }
+
+  .timeline-entry--right .timeline-entry__dot {
+    left: calc(-7px);
+  }
+
+  .timeline-entry__content {
+    text-align: left;
+  }
+
+  .timeline-entry--left .timeline-entry__content {
+    text-align: right;
+  }
+
+  .timeline-entry__year {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-teal);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-entry__title {
+    font-size: 1.15rem;
+    margin: var(--space-xs) 0;
+    color: var(--color-white);
+  }
+
+  .timeline-entry__desc {
+    font-size: 0.95rem;
+    color: var(--color-body-dark);
+    line-height: 1.5;
+  }
+
+  /* Mobile: stack left */
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 16px;
+      transform: none;
+    }
+
+    .timeline-entry {
+      width: 100%;
+      left: 0;
+      padding: 0 0 var(--space-lg) calc(16px + var(--space-lg));
+      text-align: left;
+    }
+
+    .timeline-entry--left,
+    .timeline-entry--right {
+      left: 0;
+      text-align: left;
+      padding-left: calc(16px + var(--space-lg));
+      padding-right: 0;
+    }
+
+    .timeline-entry--left .timeline-entry__content,
+    .timeline-entry--right .timeline-entry__content {
+      text-align: left;
+    }
+
+    .timeline-entry--left .timeline-entry__dot,
+    .timeline-entry--right .timeline-entry__dot {
+      left: 9px;
+      right: auto;
+    }
+  }
+</style>
