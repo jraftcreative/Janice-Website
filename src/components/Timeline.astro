@@ -12,7 +12,7 @@ const milestones = [
     <div class="timeline reveal">
       <div class="timeline__line" aria-hidden="true"></div>
       {milestones.map((m) => (
-        <div class="timeline__item" tabindex="0">
+        <div class="timeline__item">
           <div class="timeline__dot"></div>
           <span class="timeline__date">{m.year}</span>
           <h3 class="timeline__heading">{m.title}</h3>
@@ -56,8 +56,6 @@ const milestones = [
     flex: 1;
     text-align: center;
     padding: 0 var(--space-sm);
-    cursor: pointer;
-    outline: none;
   }
 
   .timeline__dot {
@@ -91,10 +89,7 @@ const milestones = [
   }
 
   .timeline__detail {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
+    margin-top: var(--space-xs);
   }
 
   .timeline__detail p {
@@ -104,23 +99,6 @@ const milestones = [
     padding-top: var(--space-xs);
   }
 
-  /* Hover / focus expand */
-  .timeline__item:hover .timeline__detail,
-  .timeline__item:focus .timeline__detail {
-    max-height: 200px;
-    opacity: 1;
-  }
-
-  .timeline__item:hover .timeline__dot,
-  .timeline__item:focus .timeline__dot {
-    transform: scale(1.4);
-    box-shadow: 0 0 20px rgba(184, 146, 63, 0.5);
-  }
-
-  .timeline__item:hover .timeline__heading,
-  .timeline__item:focus .timeline__heading {
-    color: var(--color-accent);
-  }
 
   /* Mobile: vertical left-aligned */
   @media (max-width: 768px) {
