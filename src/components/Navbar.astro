@@ -226,8 +226,6 @@ const links = [
 </style>
 
 <script>
-  let sectionObserver: IntersectionObserver | undefined;
-  let scrollHandler: (() => void) | undefined;
   let initialized = false;
 
   function syncActiveLink() {
@@ -241,43 +239,31 @@ const links = [
     });
   }
 
-  function setupSectionObserver() {
-    const navbar = document.getElementById('navbar');
-    if (!navbar) return;
-
-    // Disconnect old observer
-    sectionObserver?.disconnect();
-    navbar.classList.remove('navbar--on-light');
-
-    const navHeight = navbar.offsetHeight || 72;
-    const sections = document.querySelectorAll('section, footer');
-
-    sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const isLight = el.classList.contains('section--light') || el.classList.contains('cta-banner');
-        navbar.classList.toggle('navbar--on-light', isLight);
-      });
-    }, {
-      rootMargin: `-0px 0px -${window.innerHeight - navHeight - 1}px 0px`,
-      threshold: 0
-    });
-
-    sections.forEach((s) => sectionObserver!.observe(s));
-  }
-
   function initNavbar() {
     const navbar = document.getElementById('navbar');
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
+    if (!navbar) return;
 
-    // Only bind scroll + toggle once (navbar persists)
     if (!initialized) {
       initialized = true;
 
-      scrollHandler = () => navbar?.classList.toggle('scrolled', window.scrollY > 50);
-      window.addEventListener('scroll', scrollHandler);
+      // Scroll handler: solid bg after 50px + detect section color
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+        // Find which section is behind the navbar
+        const navBottom = navbar.getBoundingClientRect().bottom;
+        const sections = document.querySelectorAll('section, footer');
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const rect = sections[i].getBoundingClientRect();
+          if (rect.top <= navBottom && rect.bottom > 0) {
+            const isLight = sections[i].classList.contains('section--light') || sections[i].classList.contains('cta-banner');
+            navbar.classList.toggle('navbar--on-light', isLight);
+            break;
+          }
+        }
+      });
 
       toggle?.addEventListener('click', () => {
         const open = links?.classList.toggle('open');
@@ -287,7 +273,7 @@ const links = [
       });
     }
 
-    // Close menu on link click — re-bind for new page links
+    // Close menu on link click
     function closeMenu() {
       links?.classList.remove('open');
       toggle?.classList.remove('open');
@@ -297,10 +283,6 @@ const links = [
     links?.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
-
-    // Re-observe sections on the new page for navbar color switching
-    // Small delay ensures new DOM sections are ready after View Transition
-    setTimeout(setupSectionObserver, 50);
   }
 
   document.addEventListener('astro:page-load', () => {
