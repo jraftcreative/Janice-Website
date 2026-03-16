@@ -55,12 +55,41 @@ const links = [
     background: transparent;
   }
 
-  .navbar.scrolled,
-  .navbar.navbar--on-light {
+  .navbar.scrolled {
     background: rgba(27, 54, 93, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
+  }
+
+  /* Over light sections: white navbar with dark text */
+  .navbar.navbar--on-light {
+    background: #fff;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+  }
+
+  .navbar.navbar--on-light .navbar__logo-name {
+    color: var(--color-navy);
+  }
+
+  .navbar.navbar--on-light .navbar__logo-title {
+    color: var(--color-gray);
+  }
+
+  .navbar.navbar--on-light .navbar__link {
+    color: var(--color-navy);
+  }
+
+  .navbar.navbar--on-light .navbar__link:hover,
+  .navbar.navbar--on-light .navbar__link.active {
+    color: var(--color-accent);
+  }
+
+  .navbar.navbar--on-light .navbar__cta {
+    background: var(--color-navy);
+    color: #fff;
   }
 
   .navbar__inner {
