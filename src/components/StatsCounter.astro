@@ -37,8 +37,40 @@ const stats = [
 
   @media (max-width: 480px) {
     .stats {
-      grid-template-columns: 1fr;
-      gap: var(--space-sm);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: linear-gradient(135deg, var(--color-navy), var(--color-navy-mid));
+      border-radius: var(--border-radius);
+      padding: var(--space-md) var(--space-xs);
+      box-shadow: 0 4px 24px rgba(27, 54, 93, 0.18);
+      border: 1px solid var(--glass-border);
+    }
+
+    .stats__item {
+      padding: var(--space-sm) var(--space-xs);
+      position: relative;
+    }
+
+    .stats__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
+    }
+
+    .stats__accent { display: none; }
+
+    .stats__number {
+      font-size: 1.75rem;
+      color: var(--color-accent);
+    }
+
+    .stats__label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
     }
   }
 
