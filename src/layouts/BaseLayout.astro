@@ -66,6 +66,52 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </main>
   <Footer />
 
+  <!-- Floating WhatsApp Button -->
+  <a
+    href="https://wa.me/6580797449?text=Hi%20Janice%2C%20I'd%20like%20to%20enquire%20about%20wealth%20building"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-fab"
+    aria-label="Chat on WhatsApp"
+    transition:persist
+  >
+    <svg viewBox="0 0 32 32" width="28" height="28" fill="#fff">
+      <path d="M16.004 0h-.008C7.174 0 0 7.176 0 16.004c0 3.5 1.128 6.744 3.046 9.378L1.054 31.29l6.118-1.958A15.9 15.9 0 0 0 16.004 32C24.826 32 32 24.826 32 16.004S24.826 0 16.004 0zm9.302 22.594c-.388 1.094-1.938 2.002-3.168 2.268-.842.178-1.94.32-5.638-1.212-4.734-1.96-7.78-6.756-8.016-7.07-.226-.314-1.9-2.53-1.9-4.826s1.2-3.426 1.628-3.894c.428-.468.934-.586 1.246-.586.312 0 .624.002.896.016.288.014.674-.11 1.054.804.388.934 1.322 3.23 1.438 3.464.116.234.194.508.04.82-.156.314-.234.508-.468.782-.234.274-.492.612-.702.822-.234.234-.478.488-.206.958.274.468 1.214 2.002 2.608 3.244 1.79 1.596 3.298 2.09 3.766 2.324.468.234.742.196 1.016-.118.274-.314 1.172-1.368 1.484-1.836.312-.468.624-.39 1.054-.234.428.156 2.722 1.284 3.19 1.518.468.234.78.352.896.546.116.194.116 1.128-.272 2.222z"/>
+    </svg>
+  </a>
+
+  <style>
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 99;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-fab {
+        bottom: 16px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
+
   <script>
     function initReveal() {
       const observer = new IntersectionObserver((entries) => {
