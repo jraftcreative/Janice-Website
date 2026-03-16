@@ -32,11 +32,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Janice Low — Wealth Manager" />
   <meta property="og:locale" content="en_SG" />
+  <meta property="og:image" content="/Janice-Website/janice.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={`${title} | Janice Low — Wealth Manager Singapore`} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="/Janice-Website/janice.jpg" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
 
   <!-- Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -57,6 +64,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     "areaServed": "Singapore"
   })} />
 
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Janice Low",
+    "jobTitle": "Licensed Wealth Manager",
+    "description": "Licensed wealth manager in Singapore specializing in wealth protection, insurance planning, and retirement investments.",
+    "url": canonicalURL.href,
+    "telephone": "+6580797449",
+    "email": "janice.low@sg-alliance.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "SG Alliance"
+    }
+  })} />
+
+  <slot name="head" />
   <ViewTransitions />
 </head>
 <body>

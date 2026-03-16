@@ -33,6 +33,19 @@ const faqItems = [
 
 <BaseLayout title="Contact" description="Get in touch with Janice Low, licensed wealth manager in Singapore. Book a free consultation to discuss your financial goals.">
 
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  })} />
+
   <!-- Hero + Split Layout (single dark section) -->
   <section class="section section--dark grid-bg contact-hero">
     <div class="container">
