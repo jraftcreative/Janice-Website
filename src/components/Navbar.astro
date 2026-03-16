@@ -297,14 +297,9 @@ const links = [
       link.addEventListener('click', closeMenu);
     });
 
-    // Re-observe sections on the new page (mobile)
-    const isMobile = window.matchMedia('(max-width: 768px)');
-    if (isMobile.matches) {
-      setupSectionObserver();
-    } else {
-      sectionObserver?.disconnect();
-      navbar?.classList.remove('navbar--on-light');
-    }
+    // Re-observe sections on the new page for navbar color switching
+    // Small delay ensures new DOM sections are ready after View Transition
+    setTimeout(setupSectionObserver, 50);
   }
 
   document.addEventListener('astro:page-load', () => {
