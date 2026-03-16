@@ -6,7 +6,7 @@ const milestones = [
 ];
 ---
 
-<section class="section section--dark grid-bg timeline-section">
+<section class="section section--light timeline-section">
   <div class="container">
     <h2 class="timeline-title reveal">Career Milestones</h2>
     <div class="timeline reveal">
@@ -30,6 +30,7 @@ const milestones = [
     text-align: center;
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     margin-bottom: var(--space-xl);
+    color: var(--color-dark-text);
   }
 
   /* Desktop: horizontal */
@@ -63,7 +64,7 @@ const milestones = [
     height: 14px;
     border-radius: 50%;
     background: var(--color-accent);
-    border: 3px solid var(--color-navy);
+    border: 3px solid #fff;
     box-shadow: 0 0 12px rgba(184, 146, 63, 0.3);
     margin: 0 auto var(--space-sm);
     position: relative;
@@ -83,7 +84,7 @@ const milestones = [
 
   .timeline__heading {
     font-size: 1rem;
-    color: var(--color-white);
+    color: var(--color-dark-text);
     margin-bottom: 0;
     transition: color 0.3s ease;
   }
@@ -94,7 +95,7 @@ const milestones = [
 
   .timeline__detail p {
     font-size: 0.9rem;
-    color: var(--color-body-dark);
+    color: #4A5568;
     line-height: 1.5;
     padding-top: var(--space-xs);
   }
