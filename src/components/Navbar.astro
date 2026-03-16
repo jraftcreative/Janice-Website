@@ -146,6 +146,7 @@ const links = [
   }
 
   @media (max-width: 768px) {
+    /* Default mobile: white navbar (for dark sections) */
     .navbar {
       background: #fff;
       border-bottom: 1px solid rgba(27, 54, 93, 0.1);
@@ -153,6 +154,8 @@ const links = [
 
     .navbar.scrolled {
       background: #fff;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border-bottom: 1px solid rgba(27, 54, 93, 0.1);
     }
 
@@ -160,12 +163,26 @@ const links = [
       color: var(--color-gray);
     }
 
-    .navbar__toggle {
-      display: flex;
-    }
-
     .navbar__toggle-bar {
       background: var(--color-navy);
+    }
+
+    /* When over a light section: navy navbar */
+    .navbar.navbar--on-light {
+      background: rgba(27, 54, 93, 0.95);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .navbar.navbar--on-light .navbar__logo-title {
+      color: #D4C5A9;
+    }
+
+    .navbar.navbar--on-light .navbar__toggle-bar {
+      background: var(--color-accent);
+    }
+
+    .navbar__toggle {
+      display: flex;
     }
 
     .navbar__links {
@@ -215,6 +232,41 @@ const links = [
 
     window.addEventListener('scroll', () => {
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Observe sections to swap navbar color on mobile
+    const isMobile = window.matchMedia('(max-width: 768px)');
+    const navHeight = navbar?.offsetHeight || 72;
+
+    function initSectionObserver() {
+      if (!navbar) return;
+
+      const sections = document.querySelectorAll('section, footer');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const isLight = el.classList.contains('section--light') || el.classList.contains('cta-banner');
+          navbar.classList.toggle('navbar--on-light', isLight);
+        });
+      }, {
+        rootMargin: `-0px 0px -${window.innerHeight - navHeight - 1}px 0px`,
+        threshold: 0
+      });
+
+      sections.forEach((s) => sectionObserver.observe(s));
+      return sectionObserver;
+    }
+
+    let observer: IntersectionObserver | undefined;
+    if (isMobile.matches) observer = initSectionObserver();
+    isMobile.addEventListener('change', (e) => {
+      if (e.matches) {
+        observer = initSectionObserver();
+      } else {
+        observer?.disconnect();
+        navbar?.classList.remove('navbar--on-light');
+      }
     });
 
     function closeMenu() {
