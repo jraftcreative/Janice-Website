@@ -147,13 +147,25 @@ const links = [
 
   @media (max-width: 768px) {
     .navbar {
-      background: rgba(27, 54, 93, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: #fff;
+      border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+    }
+
+    .navbar.scrolled {
+      background: #fff;
+      border-bottom: 1px solid rgba(27, 54, 93, 0.1);
+    }
+
+    .navbar__logo-title {
+      color: var(--color-gray);
     }
 
     .navbar__toggle {
       display: flex;
+    }
+
+    .navbar__toggle-bar {
+      background: var(--color-navy);
     }
 
     .navbar__links {
