@@ -230,15 +230,6 @@ const links = [
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
 
-    // Sync active link on each navigation (transition:persist keeps stale state)
-    const path = window.location.pathname.replace(/\/$/, '') || '/';
-    links?.querySelectorAll('.navbar__link').forEach(link => {
-      const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
-      const isHome = href === '/Janice-Website' || href === '/';
-      const isActive = isHome ? (path === href) : path.startsWith(href);
-      link.classList.toggle('active', isActive);
-    });
-
     window.addEventListener('scroll', () => {
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
     });
@@ -299,4 +290,19 @@ const links = [
   }
 
   document.addEventListener('astro:page-load', initNavbar);
+
+  // Sync active nav link after every View Transition swap
+  function syncActiveLink() {
+    const navLinks = document.getElementById('nav-links');
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    navLinks?.querySelectorAll('.navbar__link').forEach(link => {
+      const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      const isHome = href === '/Janice-Website' || href === '/';
+      const isActive = isHome ? (path === href) : path.startsWith(href);
+      link.classList.toggle('active', isActive);
+    });
+  }
+
+  document.addEventListener('astro:after-swap', syncActiveLink);
+  document.addEventListener('astro:page-load', syncActiveLink);
 </script>
