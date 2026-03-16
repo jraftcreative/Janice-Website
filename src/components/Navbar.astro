@@ -262,6 +262,29 @@ const links = [
       min-height: 44px;
       display: inline-flex;
       align-items: center;
+      color: #D4C5A9;
+    }
+
+    .navbar__link:hover,
+    .navbar__link.active {
+      color: var(--color-accent);
+    }
+
+    .navbar.navbar--on-light .navbar__link {
+      color: #D4C5A9;
+    }
+
+    .navbar.navbar--on-light .navbar__link:hover,
+    .navbar.navbar--on-light .navbar__link.active {
+      color: var(--color-accent);
+    }
+
+    .navbar__logo-name {
+      color: var(--color-navy);
+    }
+
+    .navbar.navbar--on-light .navbar__logo-name {
+      color: var(--color-accent);
     }
 
     .navbar__toggle.open .navbar__toggle-bar:nth-child(1) {
