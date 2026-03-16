@@ -225,73 +225,10 @@ const links = [
 </style>
 
 <script>
-  function initNavbar() {
-    const navbar = document.getElementById('navbar');
-    const toggle = document.getElementById('nav-toggle');
-    const links = document.getElementById('nav-links');
+  let sectionObserver: IntersectionObserver | undefined;
+  let scrollHandler: (() => void) | undefined;
+  let initialized = false;
 
-    window.addEventListener('scroll', () => {
-      navbar?.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    // Observe sections to swap navbar color on mobile
-    const isMobile = window.matchMedia('(max-width: 768px)');
-    const navHeight = navbar?.offsetHeight || 72;
-
-    function initSectionObserver() {
-      if (!navbar) return;
-
-      const sections = document.querySelectorAll('section, footer');
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          const isLight = el.classList.contains('section--light') || el.classList.contains('cta-banner');
-          navbar.classList.toggle('navbar--on-light', isLight);
-        });
-      }, {
-        rootMargin: `-0px 0px -${window.innerHeight - navHeight - 1}px 0px`,
-        threshold: 0
-      });
-
-      sections.forEach((s) => sectionObserver.observe(s));
-      return sectionObserver;
-    }
-
-    let observer: IntersectionObserver | undefined;
-    if (isMobile.matches) observer = initSectionObserver();
-    isMobile.addEventListener('change', (e) => {
-      if (e.matches) {
-        observer = initSectionObserver();
-      } else {
-        observer?.disconnect();
-        navbar?.classList.remove('navbar--on-light');
-      }
-    });
-
-    function closeMenu() {
-      links?.classList.remove('open');
-      toggle?.classList.remove('open');
-      toggle?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    toggle?.addEventListener('click', () => {
-      const open = links?.classList.toggle('open');
-      toggle.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-
-    // Close menu on any link click (mobile) — includes CTA
-    links?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  document.addEventListener('astro:page-load', initNavbar);
-
-  // Sync active nav link after every View Transition swap
   function syncActiveLink() {
     const navLinks = document.getElementById('nav-links');
     const path = window.location.pathname.replace(/\/$/, '') || '/';
@@ -303,6 +240,76 @@ const links = [
     });
   }
 
+  function setupSectionObserver() {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+
+    // Disconnect old observer
+    sectionObserver?.disconnect();
+    navbar.classList.remove('navbar--on-light');
+
+    const navHeight = navbar.offsetHeight || 72;
+    const sections = document.querySelectorAll('section, footer');
+
+    sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const isLight = el.classList.contains('section--light') || el.classList.contains('cta-banner');
+        navbar.classList.toggle('navbar--on-light', isLight);
+      });
+    }, {
+      rootMargin: `-0px 0px -${window.innerHeight - navHeight - 1}px 0px`,
+      threshold: 0
+    });
+
+    sections.forEach((s) => sectionObserver!.observe(s));
+  }
+
+  function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+
+    // Only bind scroll + toggle once (navbar persists)
+    if (!initialized) {
+      initialized = true;
+
+      scrollHandler = () => navbar?.classList.toggle('scrolled', window.scrollY > 50);
+      window.addEventListener('scroll', scrollHandler);
+
+      toggle?.addEventListener('click', () => {
+        const open = links?.classList.toggle('open');
+        toggle.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(open));
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+    }
+
+    // Close menu on link click — re-bind for new page links
+    function closeMenu() {
+      links?.classList.remove('open');
+      toggle?.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    links?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Re-observe sections on the new page (mobile)
+    const isMobile = window.matchMedia('(max-width: 768px)');
+    if (isMobile.matches) {
+      setupSectionObserver();
+    } else {
+      sectionObserver?.disconnect();
+      navbar?.classList.remove('navbar--on-light');
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    syncActiveLink();
+    initNavbar();
+  });
   document.addEventListener('astro:after-swap', syncActiveLink);
-  document.addEventListener('astro:page-load', syncActiveLink);
 </script>
