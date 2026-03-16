@@ -230,6 +230,15 @@ const links = [
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
 
+    // Sync active link on each navigation (transition:persist keeps stale state)
+    const currentPath = window.location.pathname;
+    links?.querySelectorAll('.navbar__link').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      const isHome = href.endsWith('/') && href.length <= (document.querySelector('base')?.getAttribute('href')?.length || 1) + 1;
+      const isActive = currentPath === href || currentPath === href + '/' || (!isHome && href !== '/' && currentPath.startsWith(href));
+      link.classList.toggle('active', isActive);
+    });
+
     window.addEventListener('scroll', () => {
       navbar?.classList.toggle('scrolled', window.scrollY > 50);
     });
