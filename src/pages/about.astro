@@ -117,7 +117,7 @@ const base = import.meta.env.BASE_URL;
   .about-hero__grid {
     display: grid;
     grid-template-columns: 1fr auto;
-    align-items: start;
+    align-items: center;
     gap: var(--space-xl);
   }
 
@@ -163,8 +163,6 @@ const base = import.meta.env.BASE_URL;
     border-radius: var(--border-radius);
     padding: 2px;
     background: linear-gradient(135deg, var(--color-accent), rgba(184, 146, 63, 0.3));
-    position: sticky;
-    top: calc(var(--nav-height) + var(--space-lg));
   }
 
   @media (max-width: 768px) {
