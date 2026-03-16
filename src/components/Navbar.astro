@@ -231,11 +231,11 @@ const links = [
     const links = document.getElementById('nav-links');
 
     // Sync active link on each navigation (transition:persist keeps stale state)
-    const currentPath = window.location.pathname;
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
     links?.querySelectorAll('.navbar__link').forEach(link => {
-      const href = link.getAttribute('href') || '';
-      const isHome = href.endsWith('/') && href.length <= (document.querySelector('base')?.getAttribute('href')?.length || 1) + 1;
-      const isActive = currentPath === href || currentPath === href + '/' || (!isHome && href !== '/' && currentPath.startsWith(href));
+      const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      const isHome = href === '/Janice-Website' || href === '/';
+      const isActive = isHome ? (path === href) : path.startsWith(href);
       link.classList.toggle('active', isActive);
     });
 
