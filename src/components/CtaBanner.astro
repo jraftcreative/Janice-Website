@@ -6,13 +6,13 @@ const base = import.meta.env.BASE_URL;
   <div class="container cta-banner__content">
     <h2 class="cta-banner__headline">Not sure where to start? That's what the first meeting is for.</h2>
     <p class="cta-banner__sub">It's free, no strings attached, and takes about an hour.</p>
-    <a href="https://wa.me/6580797449" target="_blank" rel="noopener noreferrer" class="cta-banner__btn">WhatsApp Me</a>
+    <a href={`${base}contact`} class="cta-banner__btn">Book a Free Consultation</a>
   </div>
 </section>
 
 <style>
   .cta-banner {
-    background: linear-gradient(135deg, var(--color-navy), #234170, #1B365D);
+    background: var(--color-white, #fff);
     padding: var(--space-2xl) 0;
   }
 
@@ -22,14 +22,14 @@ const base = import.meta.env.BASE_URL;
 
   .cta-banner__headline {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    color: var(--color-white);
+    color: var(--color-navy);
     margin-bottom: var(--space-sm);
     line-height: 1.2;
   }
 
   .cta-banner__sub {
     font-size: clamp(1rem, 2vw, 1.15rem);
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-gray);
     margin-bottom: var(--space-lg);
   }
 
@@ -39,7 +39,7 @@ const base = import.meta.env.BASE_URL;
     justify-content: center;
     padding: 0.875rem 2.5rem;
     background: var(--color-accent);
-    color: var(--color-white);
+    color: var(--color-white, #fff);
     font-weight: 700;
     font-size: 1rem;
     border-radius: 8px;
