@@ -52,21 +52,53 @@ const base = import.meta.env.BASE_URL;
       <h2 class="about-credentials__title reveal">Credentials &amp; Qualifications</h2>
       <div class="about-credentials__grid">
         <div class="about-credentials__card reveal">
+          <div class="about-credentials__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="4" width="36" height="40" rx="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 16h20M14 22h20M14 28h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="36" cy="36" r="10" fill="#1B365D" stroke="currentColor" stroke-width="2"/>
+              <path d="M32 36l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <span class="about-credentials__abbr">M9 / M9A</span>
           <h3>Life Insurance & Investment-Linked</h3>
           <p>Licensed to advise on life insurance products and investment-linked plans in Singapore</p>
         </div>
         <div class="about-credentials__card reveal">
+          <div class="about-credentials__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4L6 14v12c0 11.1 7.68 21.48 18 24 10.32-2.52 18-12.9 18-24V14L24 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="20" y="16" width="8" height="16" rx="1" stroke="currentColor" stroke-width="2"/>
+              <rect x="16" y="20" width="16" height="8" rx="1" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <span class="about-credentials__abbr">HI</span>
           <h3>Health Insurance</h3>
           <p>Certified to advise on health insurance including Integrated Shield Plans and riders</p>
         </div>
         <div class="about-credentials__card reveal">
+          <div class="about-credentials__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24" cy="24" r="15" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+              <path d="M24 10v4M24 34v4M10 24h4M34 24h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M18 18l2 2M28 28l2 2M28 18l2-2M18 28l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="5" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <span class="about-credentials__abbr">MAS</span>
           <h3>MAS Representative</h3>
           <p>MAS No. LJ-300855233 — regulated by the Monetary Authority of Singapore</p>
         </div>
         <div class="about-credentials__card reveal">
+          <div class="about-credentials__icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2"/>
+              <ellipse cx="24" cy="24" rx="20" ry="8" stroke="currentColor" stroke-width="1.5"/>
+              <ellipse cx="24" cy="24" rx="8" ry="20" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="24" r="4" fill="currentColor"/>
+            </svg>
+          </div>
           <span class="about-credentials__abbr">MDRT</span>
           <h3>Million Dollar Round Table</h3>
           <p>Qualified in just 6 months — recognised among the top financial professionals globally</p>
@@ -221,6 +253,11 @@ const base = import.meta.env.BASE_URL;
   .about-credentials__card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-credentials__icon {
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
   }
 
   .about-credentials__abbr {
