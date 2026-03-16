@@ -254,6 +254,28 @@ const base = import.meta.env.BASE_URL;
     .about-credentials__grid {
       grid-template-columns: 1fr;
     }
+
+    .about-credentials__card {
+      padding: var(--space-md);
+    }
+  }
+
+  /* ── Philosophy mobile ── */
+  @media (max-width: 768px) {
+    .about-philosophy__card {
+      padding: var(--space-lg);
+    }
+
+    .about-philosophy__quote-mark {
+      font-size: 3rem;
+    }
+  }
+
+  /* ── Story mobile ── */
+  @media (max-width: 768px) {
+    .about-story__inner p {
+      font-size: 0.95rem;
+    }
   }
 
   /* ── Personal Touch ── */

@@ -238,4 +238,25 @@ const faqItems = [
     font-size: 1.05rem;
     color: var(--color-gray);
   }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .contact-hero__text {
+      margin-bottom: var(--space-lg);
+    }
+
+    .contact-split {
+      gap: var(--space-lg);
+    }
+
+    .contact-info__row a {
+      word-break: break-all;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-info__row {
+      font-size: 0.85rem;
+    }
+  }
 </style>

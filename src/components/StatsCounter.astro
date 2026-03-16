@@ -35,16 +35,10 @@ const stats = [
     text-align: center;
   }
 
-  @media (max-width: 768px) {
-    .stats {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-md);
-    }
-  }
-
   @media (max-width: 480px) {
     .stats {
       grid-template-columns: 1fr;
+      gap: var(--space-sm);
     }
   }
 

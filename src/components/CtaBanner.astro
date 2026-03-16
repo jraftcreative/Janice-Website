@@ -50,4 +50,14 @@ const base = import.meta.env.BASE_URL;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
+
+  @media (max-width: 480px) {
+    .cta-banner {
+      padding: var(--space-xl) 0;
+    }
+
+    .cta-banner__btn {
+      width: 100%;
+    }
+  }
 </style>

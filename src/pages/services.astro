@@ -296,6 +296,10 @@ const base = import.meta.env.BASE_URL;
 
   /* ── Mobile ── */
   @media (max-width: 768px) {
+    .services-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
     .service-row {
       grid-template-columns: 1fr;
       gap: var(--space-lg);
@@ -316,6 +320,14 @@ const base = import.meta.env.BASE_URL;
     .visual-container {
       max-width: 280px;
       padding: var(--space-lg);
+    }
+
+    .service-row__desc {
+      font-size: 0.95rem;
+    }
+
+    .service-row__list li {
+      font-size: 0.9rem;
     }
   }
 </style>
