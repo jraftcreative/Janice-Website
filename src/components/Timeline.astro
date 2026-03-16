@@ -9,18 +9,20 @@ const milestones = [
 <section class="section section--dark grid-bg timeline-section">
   <div class="container">
     <h2 class="timeline-title reveal">Career Milestones</h2>
-    <div class="timeline">
-      {milestones.map((m, i) => (
-        <div class={`timeline-entry ${i % 2 === 0 ? 'timeline-entry--left' : 'timeline-entry--right'} reveal`}>
-          <div class="timeline-entry__content glass-card">
-            <span class="timeline-entry__year">{m.year}</span>
-            <h3 class="timeline-entry__title">{m.title}</h3>
-            <p class="timeline-entry__desc">{m.description}</p>
+    <div class="timeline reveal">
+      <div class="timeline__track">
+        <div class="timeline__line" aria-hidden="true"></div>
+        {milestones.map((m) => (
+          <div class="timeline__item" tabindex="0">
+            <div class="timeline__dot"></div>
+            <span class="timeline__date">{m.year}</span>
+            <h3 class="timeline__heading">{m.title}</h3>
+            <div class="timeline__detail">
+              <p>{m.description}</p>
+            </div>
           </div>
-          <div class="timeline-entry__dot"></div>
-        </div>
-      ))}
-      <div class="timeline-line" aria-hidden="true"></div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -32,119 +34,129 @@ const milestones = [
     margin-bottom: var(--space-xl);
   }
 
-  .timeline {
+  .timeline__track {
+    display: flex;
+    justify-content: space-between;
     position: relative;
-    max-width: 900px;
-    margin: 0 auto;
+    padding-top: var(--space-lg);
   }
 
-  .timeline-line {
+  .timeline__line {
     position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--color-accent);
-    transform: translateX(-50%);
-  }
-
-  .timeline-entry {
-    position: relative;
-    width: 50%;
-    padding: 0 var(--space-lg) var(--space-xl);
-  }
-
-  .timeline-entry--left {
+    top: calc(var(--space-lg) + 6px);
     left: 0;
-    text-align: right;
-    padding-right: var(--space-xl);
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--color-accent), var(--color-accent), transparent);
   }
 
-  .timeline-entry--right {
-    left: 50%;
-    text-align: left;
-    padding-left: var(--space-xl);
+  .timeline__item {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 0 var(--space-sm);
+    cursor: pointer;
+    outline: none;
   }
 
-  .timeline-entry__dot {
-    position: absolute;
-    top: 8px;
+  .timeline__dot {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: var(--color-accent);
     border: 3px solid var(--color-navy);
     box-shadow: 0 0 12px rgba(184, 146, 63, 0.3);
+    margin: 0 auto var(--space-sm);
+    position: relative;
     z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .timeline-entry--left .timeline-entry__dot {
-    right: calc(-7px);
-  }
-
-  .timeline-entry--right .timeline-entry__dot {
-    left: calc(-7px);
-  }
-
-  .timeline-entry__content {
-    text-align: left;
-  }
-
-  .timeline-entry--left .timeline-entry__content {
-    text-align: right;
-  }
-
-  .timeline-entry__year {
+  .timeline__date {
+    display: block;
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-accent);
     letter-spacing: 0.05em;
+    margin-bottom: var(--space-xs);
   }
 
-  .timeline-entry__title {
-    font-size: 1.15rem;
-    margin: var(--space-xs) 0;
+  .timeline__heading {
+    font-size: 1rem;
     color: var(--color-white);
+    margin-bottom: 0;
+    transition: color 0.3s ease;
   }
 
-  .timeline-entry__desc {
-    font-size: 0.95rem;
+  .timeline__detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+    opacity: 0;
+    margin-top: 0;
+  }
+
+  .timeline__detail p {
+    font-size: 0.9rem;
     color: var(--color-body-dark);
     line-height: 1.5;
+    padding-top: var(--space-xs);
   }
 
-  /* Mobile: stack left */
+  /* Hover / focus expand */
+  .timeline__item:hover .timeline__detail,
+  .timeline__item:focus .timeline__detail {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: var(--space-xs);
+  }
+
+  .timeline__item:hover .timeline__dot,
+  .timeline__item:focus .timeline__dot {
+    transform: scale(1.4);
+    box-shadow: 0 0 20px rgba(184, 146, 63, 0.5);
+  }
+
+  .timeline__item:hover .timeline__heading,
+  .timeline__item:focus .timeline__heading {
+    color: var(--color-accent);
+  }
+
+  /* Mobile */
   @media (max-width: 768px) {
-    .timeline-line {
-      left: 16px;
-      transform: none;
+    .timeline__track {
+      flex-direction: column;
+      padding-top: 0;
+      padding-left: var(--space-lg);
     }
 
-    .timeline-entry {
-      width: 100%;
-      left: 0;
-      padding: 0 0 var(--space-lg) calc(16px + var(--space-lg));
-      text-align: left;
-    }
-
-    .timeline-entry--left,
-    .timeline-entry--right {
-      left: 0;
-      text-align: left;
-      padding-left: calc(16px + var(--space-lg));
-      padding-right: 0;
-    }
-
-    .timeline-entry--left .timeline-entry__content,
-    .timeline-entry--right .timeline-entry__content {
-      text-align: left;
-    }
-
-    .timeline-entry--left .timeline-entry__dot,
-    .timeline-entry--right .timeline-entry__dot {
-      left: 9px;
+    .timeline__line {
+      top: 0;
+      bottom: 0;
+      left: 6px;
       right: auto;
+      width: 2px;
+      height: auto;
+      background: linear-gradient(to bottom, transparent, var(--color-accent), var(--color-accent), transparent);
+    }
+
+    .timeline__item {
+      text-align: left;
+      padding: 0 0 var(--space-lg) var(--space-md);
+    }
+
+    .timeline__dot {
+      position: absolute;
+      left: calc(-1 * var(--space-lg) + -1px);
+      top: 2px;
+      margin: 0;
+    }
+
+    .timeline__detail {
+      max-height: none;
+      opacity: 1;
+      margin-top: var(--space-xs);
     }
   }
 </style>
