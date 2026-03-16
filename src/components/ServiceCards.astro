@@ -7,41 +7,27 @@ const base = import.meta.env.BASE_URL;
     <h2 class="services__title reveal">What I Do</h2>
     <div class="services__grid">
 
-      <a href={`${base}services#wealth`} class="glass-card services__card reveal">
-        <div class="services__icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="4 28 14 18 22 24 36 10" />
-            <polyline points="28 10 36 10 36 18" />
-          </svg>
-        </div>
-        <h3 class="services__card-title">Wealth Management</h3>
-        <p class="services__card-desc">From CPF optimization to retirement income, I help you make sense of your full financial picture.</p>
-        <span class="services__link">Learn More &rarr;</span>
-      </a>
-
-      <a href={`${base}services#insurance`} class="glass-card services__card reveal">
+      <a href={`${base}services#protection`} class="glass-card services__card reveal">
         <div class="services__icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20 4L6 10v10c0 9 6 16 14 18 8-2 14-9 14-18V10L20 4z" />
             <polyline points="14 20 18 24 26 16" />
           </svg>
         </div>
-        <h3 class="services__card-title">Insurance Advisory</h3>
-        <p class="services__card-desc">I review what you have, flag what's missing, and cut what you're overpaying for. No upselling.</p>
+        <h3 class="services__card-title">Wealth Protection</h3>
+        <p class="services__card-desc">I compare all 15 insurers to build a protection plan that fits your life stage and budget — even if you have medical conditions.</p>
         <span class="services__link">Learn More &rarr;</span>
       </a>
 
-      <a href={`${base}services#investments`} class="glass-card services__card reveal">
+      <a href={`${base}services#retirement`} class="glass-card services__card reveal">
         <div class="services__icon">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="6" y="22" width="6" height="12" rx="1" />
-            <rect x="17" y="14" width="6" height="20" rx="1" />
-            <rect x="28" y="6" width="6" height="28" rx="1" />
-            <line x1="4" y1="36" x2="36" y2="36" />
+            <polyline points="4 28 14 18 22 24 36 10" />
+            <polyline points="28 10 36 10 36 18" />
           </svg>
         </div>
-        <h3 class="services__card-title">Investment Management</h3>
-        <p class="services__card-desc">Diversified portfolios built around your timeline and comfort level, not last month's hot tips.</p>
+        <h3 class="services__card-title">Retirement Planning</h3>
+        <p class="services__card-desc">Making your money work for you — I monitor and adjust your investment strategy as the market moves.</p>
         <span class="services__link">Learn More &rarr;</span>
       </a>
 
@@ -58,7 +44,7 @@ const base = import.meta.env.BASE_URL;
 
   .services__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
   }
 

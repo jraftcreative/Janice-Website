@@ -5,79 +5,35 @@ import CtaBanner from '../components/CtaBanner.astro';
 const base = import.meta.env.BASE_URL;
 ---
 
-<BaseLayout title="Services" description="Financial planning services in Singapore: wealth management, insurance reviews, and investment advice. CPF, SRS, and MAS-regulated.">
+<BaseLayout title="Services" description="Financial planning services in Singapore: wealth protection, insurance planning, and retirement investments. MAS-regulated wealth manager.">
 
   <!-- Hero -->
   <section class="section section--dark grid-bg services-hero">
     <div class="container">
       <div class="services-hero__content reveal">
-        <h1 class="services-hero__title">What I Actually Do (And Don't Do)</h1>
-        <p class="services-hero__subtitle">No jargon, no hard sell. Here's how I help clients in Singapore manage their money.</p>
+        <h1 class="services-hero__title">What I Actually Do</h1>
+        <p class="services-hero__subtitle">No jargon, no hard sell. I help you protect what matters and grow what you have.</p>
       </div>
     </div>
   </section>
 
-  <!-- Wealth Management -->
-  <section id="wealth" class="section section--light">
+  <!-- Wealth Protection -->
+  <section id="protection" class="section section--light">
     <div class="container service-row reveal">
       <div class="service-row__text">
         <span class="service-row__label">01</span>
-        <h2 class="service-row__title">Wealth Management</h2>
-        <p class="service-row__desc">Most people I meet have bits and pieces — some CPF here, an endowment plan there, maybe an SRS account they opened but never really used. I help you connect the dots so everything works together toward the life you're actually planning for.</p>
+        <h2 class="service-row__title">Wealth Protection</h2>
+        <p class="service-row__desc">Whether you're in your 20s just starting out or in your 50s reviewing what you have, I help you create a protection plan that actually fits your budget. I compare all 15 insurers — not just the one that pays me the most — to find the right coverage for you. Even if you have medical conditions, I'll work to find options.</p>
         <ul class="service-row__list">
-          <li>CPF optimization (OA, SA, MA, RA)</li>
-          <li>Retirement income planning</li>
-          <li>Estate planning & lasting power of attorney</li>
-          <li>SRS contributions & tax relief</li>
+          <li>Life, critical illness & disability coverage</li>
+          <li>Integrated Shield Plans & riders</li>
+          <li>Insurance reviews — trim what you don't need</li>
+          <li>Coverage for pre-existing medical conditions</li>
         </ul>
         <a href={`${base}contact`} class="btn btn--primary">Get Started</a>
       </div>
       <div class="service-row__visual">
         <div class="visual-container visual-container--dark">
-          <svg class="chart-svg" viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <polyline
-              class="chart-line"
-              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30"
-              stroke="var(--color-accent)"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              fill="none"
-            />
-            <polyline
-              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30 260,140 20,140"
-              fill="url(#tealGrad)"
-              opacity="0.15"
-            />
-            <defs>
-              <linearGradient id="tealGrad" x1="140" y1="30" x2="140" y2="140" gradientUnits="userSpaceOnUse">
-                <stop stop-color="var(--color-accent)" />
-                <stop offset="1" stop-color="var(--color-accent)" stop-opacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Insurance Advisory -->
-  <section id="insurance" class="section section--dark">
-    <div class="container service-row service-row--reversed reveal">
-      <div class="service-row__text">
-        <span class="service-row__label">02</span>
-        <h2 class="service-row__title">Insurance Advisory</h2>
-        <p class="service-row__desc">A lot of people are either over-insured in areas they don't need, or have major gaps they don't know about. I do a full review of what you have, explain what's actually useful, and help you trim or fill where it matters.</p>
-        <ul class="service-row__list">
-          <li>Term life & whole life coverage</li>
-          <li>Critical illness (early & multi-pay plans)</li>
-          <li>Disability income protection</li>
-          <li>Integrated Shield Plans & riders</li>
-        </ul>
-        <a href={`${base}contact`} class="btn btn--outline">Get Started</a>
-      </div>
-      <div class="service-row__visual">
-        <div class="visual-container visual-container--transparent">
           <svg class="shield-svg" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path
               class="shield-outline"
@@ -102,28 +58,44 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- Investment Management -->
-  <section id="investments" class="section section--light">
-    <div class="container service-row reveal">
+  <!-- Retirement Planning -->
+  <section id="retirement" class="section section--dark">
+    <div class="container service-row service-row--reversed reveal">
       <div class="service-row__text">
-        <span class="service-row__label">03</span>
-        <h2 class="service-row__title">Investment Management</h2>
-        <p class="service-row__desc">I build portfolios based on how long you're investing for and how much volatility you can actually stomach — not what's trending on forums. Everything is MAS-compliant, and I rebalance regularly so you don't have to watch the market daily.</p>
+        <span class="service-row__label">02</span>
+        <h2 class="service-row__title">Retirement Planning</h2>
+        <p class="service-row__desc">Your money should be working for you, not sitting idle. I build investment strategies based on your goals, timeline, and comfort level — then I actively monitor and adjust as the market moves. You get monthly updates so you always know where you stand.</p>
         <ul class="service-row__list">
-          <li>Diversified fund portfolios</li>
+          <li>Diversified investment portfolios</li>
           <li>Risk-appropriate asset allocation</li>
-          <li>SRS & CPF-IS investment options</li>
-          <li>Quarterly rebalancing & reviews</li>
+          <li>Active monitoring & rebalancing</li>
+          <li>Monthly investment performance updates</li>
         </ul>
-        <a href={`${base}contact`} class="btn btn--primary">Get Started</a>
+        <a href={`${base}contact`} class="btn btn--outline">Get Started</a>
       </div>
       <div class="service-row__visual">
-        <div class="visual-container visual-container--dark">
-          <svg class="bars-svg" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect class="bar bar--1" x="25" y="100" width="30" rx="4" height="50" fill="var(--color-accent)" opacity="0.7" />
-            <rect class="bar bar--2" x="65" y="70" width="30" rx="4" height="80" fill="var(--color-accent)" opacity="0.8" />
-            <rect class="bar bar--3" x="105" y="45" width="30" rx="4" height="105" fill="var(--color-accent)" opacity="0.9" />
-            <rect class="bar bar--4" x="145" y="20" width="30" rx="4" height="130" fill="var(--color-accent)" />
+        <div class="visual-container visual-container--transparent">
+          <svg class="chart-svg" viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polyline
+              class="chart-line"
+              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30"
+              stroke="var(--color-accent)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <polyline
+              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30 260,140 20,140"
+              fill="url(#tealGrad)"
+              opacity="0.15"
+            />
+            <defs>
+              <linearGradient id="tealGrad" x1="140" y1="30" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop stop-color="var(--color-accent)" />
+                <stop offset="1" stop-color="var(--color-accent)" stop-opacity="0" />
+              </linearGradient>
+            </defs>
           </svg>
         </div>
       </div>

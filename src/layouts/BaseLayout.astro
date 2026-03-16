@@ -10,7 +10,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Janice Low — Licensed Financial Advisor in Singapore specializing in wealth management, insurance advisory, and investment management.' } = Astro.props;
+const { title, description = 'Janice Low — Licensed Wealth Manager in Singapore specializing in wealth protection, insurance planning, and retirement investments.' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -22,27 +22,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="description" content={description} />
   <meta name="theme-color" content="#0A1628" />
   <link rel="canonical" href={canonicalURL} />
-  <title>{title} | Janice Low — Financial Advisor Singapore</title>
+  <title>{title} | Janice Low — Wealth Manager Singapore</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content={`${title} | Janice Low — Financial Advisor Singapore`} />
+  <meta property="og:title" content={`${title} | Janice Low — Wealth Manager Singapore`} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Janice Low — Financial Advisor" />
+  <meta property="og:site_name" content="Janice Low — Wealth Manager" />
   <meta property="og:locale" content="en_SG" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} | Janice Low — Financial Advisor Singapore`} />
+  <meta name="twitter:title" content={`${title} | Janice Low — Wealth Manager Singapore`} />
   <meta name="twitter:description" content={description} />
 
   <!-- Structured Data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FinancialService",
-    "name": "Janice Low Financial Advisory",
+    "name": "Janice Low — Wealth Manager",
     "description": description,
     "url": canonicalURL.href,
     "address": {
@@ -50,8 +50,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "addressLocality": "Singapore",
       "addressCountry": "SG"
     },
-    "telephone": "+6591234567",
-    "email": "hello@janicelow.sg",
+    "telephone": "+6580797449",
+    "email": "janice.low@sg-alliance.com",
     "priceRange": "$$",
     "openingHours": "Mo-Fr 09:00-18:00",
     "areaServed": "Singapore"
