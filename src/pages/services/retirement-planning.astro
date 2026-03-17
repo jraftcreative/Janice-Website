@@ -1,0 +1,344 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProcessFlow from '../../components/ProcessFlow.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Retirement Planning" description="Retirement and investment planning in Singapore. Diversified portfolios, active monitoring, and monthly updates. MAS-regulated wealth manager.">
+
+  <!-- Hero -->
+  <section class="section section--dark grid-bg services-hero">
+    <div class="container">
+      <div class="services-hero__content reveal">
+        <h1 class="services-hero__title">Retirement Planning</h1>
+        <p class="services-hero__subtitle">Make your money work for you — with a strategy that's actively managed, not forgotten.</p>
+        <div class="service-switcher">
+          <a href={`${base}services/wealth-protection`} class="service-switcher__tab">Wealth Protection</a>
+          <a href={`${base}services/retirement-planning`} class="service-switcher__tab service-switcher__tab--active">Retirement Planning</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="section section--light">
+    <div class="container service-content reveal">
+      <h2 class="service-content__title">The Challenge</h2>
+      <div class="service-content__cols">
+        <div class="service-content__col">
+          <p>Most Singaporeans rely on CPF for retirement, but CPF alone often isn't enough — especially if you want to maintain your current lifestyle, travel, or handle unexpected medical costs.</p>
+          <p>The alternative? Investing. But for many people, investing feels risky, complicated, or like something only wealthy people do. So the money sits in a savings account earning almost nothing, slowly losing value to inflation.</p>
+        </div>
+        <div class="service-content__col">
+          <p>Even if you've started investing, there's a good chance nobody is actively watching your portfolio. Many advisors sell you a plan and disappear. Markets shift, your life changes, but your investment strategy stays the same.</p>
+          <p>Without regular monitoring and rebalancing, you could be taking on more risk than you realise — or missing out on growth opportunities that match your timeline.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Approach -->
+  <section class="section section--dark">
+    <div class="container service-row service-row--reversed reveal">
+      <div class="service-row__text">
+        <h2 class="service-row__title">How I Do It Differently</h2>
+        <p class="service-row__desc">Your money should be working for you, not sitting idle. I build investment strategies based on your goals, timeline, and comfort level — then I actively monitor and adjust as the market moves. You get monthly updates so you always know where you stand.</p>
+        <p class="service-row__desc">I don't believe in a "set and forget" approach. Markets change, your life changes, and your investment strategy should change with it. That's why I stay hands-on — so you don't have to.</p>
+      </div>
+      <div class="service-row__visual">
+        <div class="visual-container visual-container--transparent">
+          <svg class="chart-svg" viewBox="0 0 280 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polyline
+              class="chart-line"
+              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30"
+              stroke="var(--color-accent)"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <polyline
+              points="20,130 60,110 100,120 140,80 180,90 220,50 260,30 260,140 20,140"
+              fill="url(#tealGrad)"
+              opacity="0.15"
+            />
+            <defs>
+              <linearGradient id="tealGrad" x1="140" y1="30" x2="140" y2="140" gradientUnits="userSpaceOnUse">
+                <stop stop-color="var(--color-accent)" />
+                <stop offset="1" stop-color="var(--color-accent)" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section section--light">
+    <div class="container reveal">
+      <h2 class="service-content__title">What's Included</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Diversified Portfolios</h3>
+          <p>Your investments are spread across asset classes, regions, and sectors — reducing risk while maximising long-term growth potential.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Risk-Appropriate Allocation</h3>
+          <p>I match your portfolio to your comfort level and timeline. Conservative, balanced, or growth — your strategy reflects who you are, not a generic template.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Active Monitoring</h3>
+          <p>I don't sell you a plan and disappear. I watch the markets, track your portfolio performance, and make adjustments when the data says it's time.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Monthly Updates</h3>
+          <p>Every month, you get a clear report on how your investments are performing — no jargon, no guesswork. You'll always know exactly where your money stands.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Goal-Based Strategy</h3>
+          <p>Whether you're planning for retirement at 55, your children's education, or financial independence — your investment strategy is built around your specific milestones.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Regular Rebalancing</h3>
+          <p>As markets move and your life changes, I rebalance your portfolio to keep it aligned with your goals. No set-and-forget — just consistent, proactive management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow -->
+  <ProcessFlow />
+
+  <!-- CTA Banner -->
+  <CtaBanner />
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .services-hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    text-align: center;
+  }
+
+  .services-hero__title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.15;
+    margin-bottom: var(--space-sm);
+  }
+
+  .services-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-gray);
+    max-width: 540px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  /* ── Service Switcher ── */
+  .service-switcher {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .service-switcher__tab {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-gray);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .service-switcher__tab:hover {
+    color: var(--color-white);
+  }
+
+  .service-switcher__tab--active {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .service-switcher__tab--active:hover {
+    color: var(--color-white);
+  }
+
+  /* ── Service Content ── */
+  .service-content__title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .section--light .service-content__title {
+    color: var(--color-dark-text);
+  }
+
+  .service-content__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .service-content__col p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4A5568;
+    margin-bottom: var(--space-md);
+  }
+
+  .service-content__col p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Service Row ── */
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .service-row--reversed {
+    direction: rtl;
+  }
+
+  .service-row--reversed > * {
+    direction: ltr;
+  }
+
+  .service-row__title {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-row__desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    color: var(--color-body-dark);
+  }
+
+  /* ── Visual Containers ── */
+  .service-row__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-container {
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .visual-container--transparent {
+    background: rgba(184, 146, 63, 0.06);
+    border: 1px solid var(--glass-border);
+  }
+
+  .chart-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .chart-line {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+  }
+
+  .visible .chart-line {
+    animation: drawLine 1.5s ease forwards 0.3s;
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── Benefits Grid ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .benefit-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    border-top: 3px solid var(--color-accent);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-dark-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .benefit-card p {
+    font-size: 0.9rem;
+    color: #64748B;
+    line-height: 1.6;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .services-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .service-content__cols {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .service-row--reversed {
+      direction: ltr;
+    }
+
+    .service-row__visual {
+      order: -1;
+    }
+
+    .visual-container {
+      max-width: 280px;
+      padding: var(--space-lg);
+    }
+
+    .service-row__desc {
+      font-size: 0.95rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-switcher__tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>

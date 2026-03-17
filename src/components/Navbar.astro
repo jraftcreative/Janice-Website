@@ -4,7 +4,7 @@ const currentPath = Astro.url.pathname;
 const links = [
   { href: `${base}`, label: 'Home' },
   { href: `${base}about`, label: 'About' },
-  { href: `${base}services`, label: 'Services' },
+  { href: `${base}services/wealth-protection`, label: 'Services' },
   { href: `${base}insights`, label: 'Insights' },
   { href: `${base}contact`, label: 'Contact' },
 ];
@@ -310,7 +310,8 @@ const links = [
     navLinks?.querySelectorAll('.navbar__link').forEach(link => {
       const href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
       const isHome = href === '/Janice-Website' || href === '/';
-      const isActive = isHome ? (path === href) : path.startsWith(href);
+      const servicesBase = href.includes('/services/') ? href.substring(0, href.indexOf('/services/') + '/services'.length) : null;
+      const isActive = isHome ? (path === href) : servicesBase ? path.startsWith(servicesBase) : path.startsWith(href);
       link.classList.toggle('active', isActive);
     });
   }

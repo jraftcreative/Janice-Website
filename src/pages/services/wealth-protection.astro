@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProcessFlow from '../../components/ProcessFlow.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Wealth Protection" description="Insurance and wealth protection planning in Singapore. Compare all 15 insurers for life, critical illness, health insurance, and coverage for pre-existing conditions. MAS-regulated wealth manager.">
+
+  <!-- Hero -->
+  <section class="section section--dark grid-bg services-hero">
+    <div class="container">
+      <div class="services-hero__content reveal">
+        <h1 class="services-hero__title">Wealth Protection</h1>
+        <p class="services-hero__subtitle">Build a protection plan that actually fits your life — not just the one that pays the highest commission.</p>
+        <div class="service-switcher">
+          <a href={`${base}services/wealth-protection`} class="service-switcher__tab service-switcher__tab--active">Wealth Protection</a>
+          <a href={`${base}services/retirement-planning`} class="service-switcher__tab">Retirement Planning</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Challenge -->
+  <section class="section section--light">
+    <div class="container service-content reveal">
+      <h2 class="service-content__title">The Challenge</h2>
+      <div class="service-content__cols">
+        <div class="service-content__col">
+          <p>Most people know they need insurance, but the process feels overwhelming. There are hundreds of plans across dozens of insurers, agents who push products that benefit them more than you, and fine print that takes a law degree to understand.</p>
+          <p>The result? Many Singaporeans end up over-insured in areas they don't need, under-insured where it matters most, or paying premiums they can't sustain long-term.</p>
+        </div>
+        <div class="service-content__col">
+          <p>If you have pre-existing medical conditions, it gets even harder. Most agents won't put in the work to find you coverage — it's easier to move on to the next client.</p>
+          <p>And if you already have policies from years ago, chances are nobody's reviewed them to see if they still make sense for where you are today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Approach -->
+  <section class="section section--dark">
+    <div class="container service-row reveal">
+      <div class="service-row__text">
+        <h2 class="service-row__title">How I Do It Differently</h2>
+        <p class="service-row__desc">Whether you're in your 20s just starting out or in your 50s reviewing what you have, I help you create a protection plan that actually fits your budget. I compare all 15 insurers — not just the one that pays me the most — to find the right coverage for you. Even if you have medical conditions, I'll work to find options.</p>
+        <p class="service-row__desc">I don't believe in one-size-fits-all. Your coverage should reflect your actual life — your income, your dependents, your health, and your goals. That's why I start with a proper deep dive before recommending anything.</p>
+      </div>
+      <div class="service-row__visual">
+        <div class="visual-container visual-container--dark">
+          <svg class="shield-svg" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              class="shield-outline"
+              d="M60 10 L105 35 L105 75 C105 100 85 120 60 130 C35 120 15 100 15 75 L15 35 Z"
+              stroke="var(--color-accent)"
+              stroke-width="2.5"
+              fill="none"
+              stroke-linejoin="round"
+            />
+            <polyline
+              class="shield-check"
+              points="40,72 54,86 82,58"
+              stroke="var(--color-accent)"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="section section--light">
+    <div class="container reveal">
+      <h2 class="service-content__title">What's Included</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Life & Critical Illness</h3>
+          <p>Coverage that ensures your family is financially secure if something happens to you — whether it's death, a critical illness diagnosis, or total permanent disability.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Integrated Shield Plans</h3>
+          <p>Navigate Singapore's MediShield Life system with the right Integrated Shield Plan and riders. I'll make sure you're covered for private hospital care without overpaying.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Insurance Reviews</h3>
+          <p>Already have policies? I'll review everything you currently hold, identify gaps or overlaps, and trim what you don't need — so every dollar goes where it matters.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Pre-Existing Conditions</h3>
+          <p>Most agents avoid clients with medical history. I don't. I'll work across all 15 insurers to find coverage options, even when others have turned you away.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Budget-First Planning</h3>
+          <p>I never recommend a plan you can't afford. Your protection strategy is built around what you can sustain — not what generates the biggest commission.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Ongoing Support</h3>
+          <p>Life changes — marriages, children, career moves. I check in regularly and adjust your coverage as your situation evolves. I'm always a WhatsApp away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Flow -->
+  <ProcessFlow />
+
+  <!-- CTA Banner -->
+  <CtaBanner />
+
+</BaseLayout>
+
+<style>
+  /* ── Hero ── */
+  .services-hero {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    text-align: center;
+  }
+
+  .services-hero__title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.15;
+    margin-bottom: var(--space-sm);
+  }
+
+  .services-hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-gray);
+    max-width: 540px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  /* ── Service Switcher ── */
+  .service-switcher {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .service-switcher__tab {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-gray);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .service-switcher__tab:hover {
+    color: var(--color-white);
+  }
+
+  .service-switcher__tab--active {
+    background: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  .service-switcher__tab--active:hover {
+    color: var(--color-white);
+  }
+
+  /* ── Service Content ── */
+  .service-content__title {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .section--light .service-content__title {
+    color: var(--color-dark-text);
+  }
+
+  .service-content__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+
+  .service-content__col p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4A5568;
+    margin-bottom: var(--space-md);
+  }
+
+  .service-content__col p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ── Service Row ── */
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .service-row__title {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-row__desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    color: var(--color-body-dark);
+  }
+
+  /* ── Visual Containers ── */
+  .service-row__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visual-container {
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .visual-container--dark {
+    background: var(--color-navy);
+    border: 1px solid var(--glass-border);
+  }
+
+  .shield-svg {
+    width: 120px;
+    height: auto;
+  }
+
+  .shield-outline {
+    filter: drop-shadow(0 0 6px rgba(184, 146, 63, 0.3));
+  }
+
+  .visible .shield-outline {
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .shield-check {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+  }
+
+  .visible .shield-check {
+    animation: drawLine 0.8s ease forwards 0.4s;
+  }
+
+  @keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(184, 146, 63, 0.3)); }
+    50% { filter: drop-shadow(0 0 18px rgba(184, 146, 63, 0.3)); }
+  }
+
+  /* ── Benefits Grid ── */
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .benefit-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    padding: var(--space-lg);
+    border-top: 3px solid var(--color-accent);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefit-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-dark-text);
+    margin-bottom: var(--space-xs);
+  }
+
+  .benefit-card p {
+    font-size: 0.9rem;
+    color: #64748B;
+    line-height: 1.6;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 768px) {
+    .services-hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .service-content__cols {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .service-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .service-row__visual {
+      order: -1;
+    }
+
+    .visual-container {
+      max-width: 280px;
+      padding: var(--space-lg);
+    }
+
+    .service-row__desc {
+      font-size: 0.95rem;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-switcher__tab {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
