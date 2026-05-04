@@ -1,128 +1,135 @@
 ---
 const base = import.meta.env.BASE_URL;
-const differentiators = [
-  {
-    title: 'MAS Licensed & Regulated',
-    desc: 'MAS Representative No. LJ-300855233 — look me up on the Financial Advisers Public Register anytime',
-  },
-  {
-    title: 'No Hard-Sell, Ever',
-    desc: 'I compare all 15 insurers to find what genuinely fits your situation and budget — not what pays me the most',
-  },
-  {
-    title: 'Single Mother Who Gets It',
-    desc: 'I\'ve been through retrenchment and financial vulnerability firsthand. I understand what it feels like to worry about money',
-  },
-  {
-    title: 'I Don\'t Disappear',
-    desc: 'Monthly investment updates, frequent check-ins, and I actually reply on WhatsApp — I stay in your corner long after the paperwork is signed',
-  },
-];
 ---
 
-<section class="section section--light">
+<section class="story">
   <div class="container">
-    <h2 class="why__title reveal">Why Work With Me</h2>
-    <div class="why__grid">
-      <div class="why__list">
-        {differentiators.map((d) => (
-          <div class="why__item reveal">
-            <div class="why__check">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="4 12 9 17 20 6" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="why__item-title">{d.title}</h3>
-              <p class="why__item-desc">{d.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div class="story__grid">
+      <div class="story__photo-wrap reveal">
+        <img src={`${base}janice.jpg`} alt="Janice Low" class="story__photo" width="400" height="520" loading="lazy" />
       </div>
-      <div class="why__photo-wrap reveal">
-        <img src={`${base}janice.jpg`} alt="Janice Low" class="why__photo" width="300" height="400" loading="lazy" />
+      <div class="story__content reveal">
+        <p class="story__label">A Bit About Me</p>
+        <h2 class="story__title">I've been where you are.</h2>
+        <p class="story__text">I'm a single mother. I've been retrenched. I've felt the weight of not knowing whether my finances could hold if something went wrong.</p>
+        <p class="story__text">That's why I became a wealth manager — not to sell policies, but to make sure no one has to figure this out alone. I sit on the same side of the table as you.</p>
+        <p class="story__text">I compare all 15 insurers in Singapore. I don't push products — I find what genuinely fits your life stage, your budget, and your worries. And I stay. Monthly updates, WhatsApp replies, annual reviews. I don't disappear after the paperwork.</p>
+        <div class="story__trust">
+          <div class="story__trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>MAS Licensed & Regulated</span>
+          </div>
+          <div class="story__trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+            <span>Compares all 15 insurers</span>
+          </div>
+          <div class="story__trust-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <span>Actually replies on WhatsApp</span>
+          </div>
+        </div>
+        <a href={`${base}about`} class="story__link">Get to know me &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .why__title {
-    text-align: center;
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    margin-bottom: var(--space-xl);
-    color: var(--color-navy);
+  .story {
+    padding: var(--space-3xl) 0;
+    background: var(--color-light);
   }
 
-  .why__grid {
+  .story__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
+    grid-template-columns: 380px 1fr;
+    gap: var(--space-2xl);
     align-items: center;
   }
 
-  @media (max-width: 768px) {
-    .why__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .why__photo-wrap {
-      display: flex;
-      justify-content: center;
-      order: -1;
-    }
-
-    .why__photo {
-      width: 200px;
-      height: 260px;
-    }
-  }
-
-  .why__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .why__item {
-    display: flex;
-    gap: var(--space-sm);
-    align-items: flex-start;
-  }
-
-  .why__check {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-accent-dim);
-    color: var(--color-accent);
-    border-radius: 50%;
-    margin-top: 2px;
-  }
-
-  .why__item-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--color-navy);
-    margin-bottom: 0.25rem;
-  }
-
-  .why__item-desc {
-    font-size: 0.95rem;
-    color: var(--color-gray);
-    line-height: 1.5;
-  }
-
-  .why__photo {
-    width: 300px;
-    max-width: 100%;
-    height: 400px;
+  .story__photo {
+    width: 100%;
+    height: 520px;
     object-fit: cover;
     object-position: center top;
-    border-radius: var(--border-radius);
-    border: 3px solid var(--color-accent);
+    border-radius: 0.75rem;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  }
+
+  .story__label {
+    font-size: 0.78rem;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+
+  .story__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--color-navy);
+    line-height: 1.15;
+    margin-bottom: var(--space-lg);
+  }
+
+  .story__text {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+    line-height: 1.75;
+    margin-bottom: var(--space-sm);
+  }
+
+  .story__text:last-of-type {
+    margin-bottom: var(--space-lg);
+  }
+
+  .story__trust {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-top: 1px solid rgba(27,54,93,0.08);
+    border-bottom: 1px solid rgba(27,54,93,0.08);
+  }
+
+  .story__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-navy);
+    font-weight: 500;
+  }
+
+  .story__trust-item svg {
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .story__link {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .story__link:hover {
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 900px) {
+    .story__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+    .story__photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .story__photo {
+      width: 280px;
+      height: 370px;
+    }
   }
 </style>

@@ -2,238 +2,188 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<section class="hero grid-bg">
+<section class="hero">
   <div class="container hero__inner">
     <div class="hero__text">
       <p class="hero__eyebrow">Licensed Wealth Manager &middot; Singapore</p>
       <h1 class="hero__headline">
         Helping You<br />
-        <span class="hero__gradient">Protect What Matters</span>
+        <span class="hero__accent">Protect What Matters</span>
       </h1>
-      <div class="hero__typing">
-        <span class="hero__typing-text" id="typing-text"></span><span class="hero__cursor">|</span>
-      </div>
+      <p class="hero__desc">I help Singaporeans build financial plans that actually fit their life — whether you're buying your first BTO, planning for retirement, or protecting your family.</p>
       <div class="hero__cta">
         <a href={`${base}contact`} class="btn btn--primary">Book a Free Consultation</a>
         <a href={`${base}services/wealth-protection`} class="btn btn--outline">Explore Services</a>
       </div>
+      <p class="hero__mas">MAS Representative No. LJ-300855233</p>
     </div>
-
     <div class="hero__photo-wrap">
       <img
         src={`${base}janice.jpg`}
         alt="Janice Low — Licensed Wealth Manager in Singapore"
         class="hero__photo"
-        width="320"
-        height="320"
+        width="480"
+        height="600"
         loading="eager"
       />
-      <p class="hero__name-badge">
-        <strong>Janice Low</strong><br />
-        <span>Wealth Manager</span>
-      </p>
     </div>
   </div>
 </section>
 
 <style>
-  /* ── Base / Mobile ─────────────────────────────── */
   .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: var(--color-navy);
     color: var(--color-white);
-    position: relative;
     overflow: hidden;
-    min-height: auto;
-    padding: var(--space-xl) 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+      radial-gradient(circle 600px at 20% 80%, rgba(42,77,127,0.9) 0%, transparent 60%),
+      radial-gradient(circle 500px at 80% 20%, rgba(184,146,63,0.18) 0%, transparent 50%),
+      radial-gradient(circle 700px at 50% 50%, rgba(15,40,70,0.7) 0%, transparent 60%);
+    animation: heroGradient 10s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    width: 160%;
+    height: 160%;
+    background:
+      radial-gradient(circle 400px at 70% 80%, rgba(184,146,63,0.12) 0%, transparent 50%),
+      radial-gradient(circle 500px at 25% 40%, rgba(50,90,150,0.6) 0%, transparent 55%);
+    animation: heroGradient2 14s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes heroGradient {
+    0% { transform: translate(0%, 0%) rotate(0deg); }
+    100% { transform: translate(5%, -5%) rotate(3deg); }
+  }
+
+  @keyframes heroGradient2 {
+    0% { transform: translate(0%, 0%) rotate(0deg); }
+    100% { transform: translate(-4%, 4%) rotate(-2deg); }
   }
 
   .hero__inner {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: var(--space-2xl);
     align-items: center;
-    gap: var(--space-lg);
     position: relative;
     z-index: 1;
-  }
-
-  /* ── Photo ─────────────────────────────────────── */
-  .hero__photo-wrap {
-    order: -1;
-    text-align: center;
-  }
-
-  .hero__photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--color-accent);
-    box-shadow: 0 0 24px rgba(183, 148, 60, 0.25);
-  }
-
-  .hero__name-badge {
-    margin-top: var(--space-xs);
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: var(--color-gray);
-  }
-
-  .hero__name-badge strong {
-    color: var(--color-white);
-    font-size: 1.05rem;
-  }
-
-  /* ── Text ──────────────────────────────────────── */
-  .hero__text {
-    text-align: center;
+    padding: 120px 0 80px;
   }
 
   .hero__eyebrow {
-    font-family: var(--font-body);
-    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+    font-size: 0.82rem;
     color: var(--color-accent);
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: var(--space-md);
   }
 
   .hero__headline {
-    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-size: clamp(2.6rem, 5vw, 4rem);
     font-weight: 400;
-    line-height: 1.08;
-    margin-bottom: var(--space-md);
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
     letter-spacing: -0.01em;
   }
 
-  .hero__gradient {
-    background: linear-gradient(135deg, var(--color-accent), #D4B35A);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero__typing {
-    font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    color: var(--color-gray);
-    min-height: 2rem;
-    margin-bottom: var(--space-lg);
-    font-weight: 400;
-  }
-
-  .hero__cursor {
-    animation: blink 1s step-end infinite;
+  .hero__accent {
     color: var(--color-accent);
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+  .hero__desc {
+    font-size: 1.05rem;
+    color: var(--color-body-dark);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: var(--space-lg);
   }
 
   .hero__cta {
     display: flex;
-    flex-direction: column;
     gap: var(--space-sm);
   }
 
-  .hero__cta .btn {
-    width: 100%;
-    text-align: center;
+  .hero__mas {
+    margin-top: var(--space-lg);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.02em;
   }
 
-  /* ── Desktop (>768px) ──────────────────────────── */
-  @media (min-width: 769px) {
+  .hero__photo-wrap {
+    position: relative;
+  }
+
+  .hero__photo {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 1rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+  }
+
+  .hero__photo-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: -16px;
+    width: 120px;
+    height: 120px;
+    border: 2px solid var(--color-accent);
+    border-radius: 1rem;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
     .hero {
-      min-height: 100vh;
-      padding: 0;
+      min-height: auto;
     }
-
     .hero__inner {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
+      grid-template-columns: 1fr;
+      padding: 120px 0 60px;
+      text-align: center;
     }
-
-    .hero__text {
-      text-align: left;
-      flex: 1;
-      max-width: 600px;
-    }
-
     .hero__photo-wrap {
-      order: 1;
-      flex-shrink: 0;
+      order: -1;
+      display: flex;
+      justify-content: center;
     }
-
     .hero__photo {
-      width: 320px;
-      height: 320px;
-      border-radius: 1rem;
-      border-width: 3px;
+      width: 260px;
+      height: 340px;
+      border-radius: 0.75rem;
     }
-
-    .hero__name-badge {
-      display: none;
+    .hero__photo-wrap::after { display: none; }
+    .hero__desc {
+      margin-left: auto;
+      margin-right: auto;
     }
-
     .hero__cta {
-      flex-direction: row;
-      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .hero__cta .btn {
-      width: auto;
-    }
+    .hero__cta .btn { width: 100%; max-width: 320px; text-align: center; }
+    .hero__mas { text-align: center; }
   }
 </style>
-
-<script>
-  function initTyping() {
-    const el = document.getElementById('typing-text');
-    if (!el) return;
-
-    const phrases = [
-      'Wealth Protection',
-      'Retirement Planning',
-    ];
-
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-
-    function tick() {
-      const current = phrases[phraseIndex];
-
-      if (!deleting) {
-        el.textContent = current.slice(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-          deleting = true;
-          setTimeout(tick, 1800);
-          return;
-        }
-        setTimeout(tick, 80);
-      } else {
-        el.textContent = current.slice(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          deleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          setTimeout(tick, 400);
-          return;
-        }
-        setTimeout(tick, 40);
-      }
-    }
-
-    el.textContent = '';
-    tick();
-  }
-
-  document.addEventListener('astro:page-load', initTyping);
-</script>

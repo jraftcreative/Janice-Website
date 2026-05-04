@@ -1,33 +1,31 @@
 ---
 const testimonials = [
-  { quote: 'I\'m 27, BTO is coming up, and I\'m supporting my mother too. Janice helped me figure out how to balance everything — protection, savings, and still have money to live. She didn\'t judge my budget, she worked with it.', name: 'Marcus' },
-  { quote: 'Janice is the real deal. No fluff, no pressure. She just gets it done.', name: 'Yandao' },
-  { quote: 'As a foreigner working in Singapore, I had no idea where to start with insurance or investments here. Janice broke everything down for me and made sure I wasn\'t overpaying or missing anything important.', name: 'Lin' },
-  { quote: 'I have a medical condition and was told by other agents that I couldn\'t get covered. Janice didn\'t give up — she found options I didn\'t even know existed. That meant everything to me.', name: 'Jon' },
-  { quote: 'I\'m in my 50s and finally getting serious about retirement. Janice set up a proper plan and gives me monthly updates on how my investments are doing. I actually feel like someone\'s watching out for me.', name: 'D.T.' },
-  { quote: 'I\'m 26 and I was honestly scared of financial advisors — thought they\'d just hard-sell me stuff. Janice was the complete opposite. She listened, explained everything, and never made me feel stupid for not knowing things.', name: 'Bryan' },
+  { quote: 'I\'m 27, BTO is coming up, and I\'m supporting my mother too. Janice helped me figure out how to balance everything — protection, savings, and still have money to live. She didn\'t judge my budget, she worked with it.', name: 'Marcus', context: '27 · First-time BTO buyer' },
+  { quote: 'Janice is the real deal. No fluff, no pressure. She just gets it done.', name: 'Yandao', context: 'Client since 2024' },
+  { quote: 'As a foreigner working in Singapore, I had no idea where to start with insurance or investments here. Janice broke everything down for me and made sure I wasn\'t overpaying or missing anything important.', name: 'Lin', context: 'Expat in Singapore' },
+  { quote: 'I have a medical condition and was told by other agents that I couldn\'t get covered. Janice didn\'t give up — she found options I didn\'t even know existed. That meant everything to me.', name: 'Jon', context: 'Pre-existing condition' },
+  { quote: 'I\'m in my 50s and finally getting serious about retirement. Janice set up a proper plan and gives me monthly updates on how my investments are doing. I actually feel like someone\'s watching out for me.', name: 'D.T.', context: 'Retirement planning client' },
+  { quote: 'I was honestly scared of financial advisors — thought they\'d just hard-sell me stuff. Janice was the complete opposite. She listened, explained everything, and never made me feel stupid for not knowing things.', name: 'Bryan', context: '26 · First time getting advised' },
 ];
 ---
 
-<section class="section section--dark testimonials-section">
+<section class="testimonials">
   <div class="container">
-    <h2 class="testimonials__title reveal">What Clients Say</h2>
+    <p class="testimonials__label reveal">What Clients Say</p>
+    <h2 class="testimonials__title reveal">Real people. Real situations.</h2>
   </div>
   <div class="testimonials__track-wrap">
     <div class="testimonials__track">
       {[...testimonials, ...testimonials].map((t) => (
         <div class="testimonials__card">
-          <p class="testimonials__quote">&ldquo;{t.quote}&rdquo;</p>
-          <div class="testimonials__stars">
-            {Array.from({ length: 5 }).map(() => (
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--color-gold)">
-                <path d="M8 0l2.47 4.94L16 5.77l-4 3.86.94 5.47L8 12.67 3.06 15.1 4 9.63 0 5.77l5.53-.83z" />
-              </svg>
-            ))}
-          </div>
+          <svg class="testimonials__quote-mark" width="28" height="28" viewBox="0 0 24 24" fill="rgba(184,146,63,0.15)"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/></svg>
+          <p class="testimonials__quote">{t.quote}</p>
           <div class="testimonials__author">
-            <span class="testimonials__initials">{t.name}</span>
-            <span class="testimonials__name">{t.name}</span>
+            <div class="testimonials__avatar">{t.name.charAt(0)}</div>
+            <div>
+              <span class="testimonials__name">{t.name}</span>
+              <span class="testimonials__context">{t.context}</span>
+            </div>
           </div>
         </div>
       ))}
@@ -36,22 +34,60 @@ const testimonials = [
 </section>
 
 <style>
+  .testimonials {
+    padding: var(--space-3xl) 0 var(--space-2xl);
+    background: var(--color-white);
+    overflow: hidden;
+  }
+
+  .testimonials__label {
+    font-size: 0.78rem;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+
   .testimonials__title {
     text-align: center;
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    color: var(--color-navy);
     margin-bottom: var(--space-xl);
   }
 
   .testimonials__track-wrap {
     overflow: hidden;
     width: 100%;
+    position: relative;
+  }
+
+  .testimonials__track-wrap::before,
+  .testimonials__track-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .testimonials__track-wrap::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-white), transparent);
+  }
+  .testimonials__track-wrap::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-white), transparent);
   }
 
   .testimonials__track {
     display: flex;
-    gap: var(--space-md);
-    animation: scroll-left 40s linear infinite;
+    gap: 20px;
+    animation: scroll-left 45s linear infinite;
     width: max-content;
+    padding: var(--space-sm) 0;
   }
 
   .testimonials__track:hover {
@@ -65,59 +101,70 @@ const testimonials = [
 
   .testimonials__card {
     flex-shrink: 0;
-    width: 380px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--border-radius);
-    padding: var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+    width: 360px;
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
+    border: 1px solid rgba(27,54,93,0.08);
+    border-radius: 0.75rem;
+    background: var(--color-light);
+    position: relative;
+  }
+
+  .testimonials__quote-mark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0.6;
   }
 
   .testimonials__quote {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--color-body-dark);
-    flex-grow: 1;
-  }
-
-  .testimonials__stars {
-    display: flex;
-    gap: 4px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-dark-text);
+    margin-bottom: var(--space-md);
   }
 
   .testimonials__author {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 10px;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(27,54,93,0.06);
   }
 
-  .testimonials__initials {
+  .testimonials__avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: var(--color-accent-dim);
-    color: var(--color-accent);
+    background: var(--color-navy);
+    color: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 600;
+    flex-shrink: 0;
   }
 
   .testimonials__name {
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--color-white);
+    font-size: 0.88rem;
+    color: var(--color-navy);
+    display: block;
+  }
+
+  .testimonials__context {
+    font-size: 0.75rem;
+    color: var(--color-gray);
   }
 
   @media (max-width: 480px) {
     .testimonials__card {
       width: 300px;
+      padding: var(--space-md);
+    }
+    .testimonials__track-wrap::before,
+    .testimonials__track-wrap::after {
+      width: 40px;
     }
   }
 </style>

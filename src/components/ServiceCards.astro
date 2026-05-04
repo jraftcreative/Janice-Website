@@ -2,33 +2,39 @@
 const base = import.meta.env.BASE_URL;
 ---
 
-<section class="section section--dark">
+<section class="services">
   <div class="container">
-    <h2 class="services__title reveal">What I Do</h2>
+    <p class="services__label reveal">What I Help With</p>
+    <h2 class="services__title reveal">Two things I do — and I do them well.</h2>
     <div class="services__grid">
 
-      <a href={`${base}services/wealth-protection`} class="glass-card services__card reveal">
-        <div class="services__icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 4L6 10v10c0 9 6 16 14 18 8-2 14-9 14-18V10L20 4z" />
-            <polyline points="14 20 18 24 26 16" />
-          </svg>
+      <a href={`${base}services/wealth-protection`} class="services__card reveal">
+        <div class="services__card-inner">
+          <div class="services__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          <h3>Wealth Protection</h3>
+          <p>Life insurance, critical illness, hospitalisation. I compare all 15 insurers to find the right fit — not the most expensive one.</p>
+          <span class="services__who">For anyone who has people depending on them.</span>
+          <span class="services__link">Learn more &rarr;</span>
         </div>
-        <h3 class="services__card-title">Wealth Protection</h3>
-        <p class="services__card-desc">I compare all 15 insurers to build a protection plan that fits your life stage and budget — even if you have medical conditions.</p>
-        <span class="services__link">Learn More &rarr;</span>
       </a>
 
-      <a href={`${base}services/retirement-planning`} class="glass-card services__card reveal">
-        <div class="services__icon">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="4 28 14 18 22 24 36 10" />
-            <polyline points="28 10 36 10 36 18" />
-          </svg>
+      <a href={`${base}services/retirement-planning`} class="services__card reveal">
+        <div class="services__card-inner">
+          <div class="services__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3>Retirement Planning</h3>
+          <p>Investment-linked plans and portfolio management. I monitor your money monthly and adjust strategy as markets move.</p>
+          <span class="services__who">For anyone who wants their money working harder than they do.</span>
+          <span class="services__link">Learn more &rarr;</span>
         </div>
-        <h3 class="services__card-title">Retirement Planning</h3>
-        <p class="services__card-desc">Making your money work for you — I monitor and adjust your investment strategy as the market moves.</p>
-        <span class="services__link">Learn More &rarr;</span>
       </a>
 
     </div>
@@ -36,30 +42,63 @@ const base = import.meta.env.BASE_URL;
 </section>
 
 <style>
+  .services {
+    padding: var(--space-3xl) 0;
+    background: var(--color-navy);
+    color: var(--color-white);
+  }
+
+  .services__label {
+    font-size: 0.78rem;
+    color: var(--color-accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+  }
+
   .services__title {
     text-align: center;
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    margin-bottom: var(--space-xl);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    margin-bottom: var(--space-2xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
   }
 
   .services__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
-  }
-
-  @media (max-width: 768px) {
-    .services__grid {
-      grid-template-columns: 1fr;
-    }
+    max-width: 900px;
+    margin: 0 auto;
   }
 
   .services__card {
+    text-decoration: none;
+    color: var(--color-white);
+    transition: var(--transition);
+  }
+
+  .services__card-inner {
+    height: 100%;
+    padding: var(--space-xl) var(--space-lg);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.75rem;
+    background: rgba(255,255,255,0.03);
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    text-decoration: none;
-    color: var(--color-white);
+  }
+
+  .services__card:hover .services__card-inner {
+    border-color: rgba(184,146,63,0.25);
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
   }
 
   .services__icon {
@@ -67,26 +106,43 @@ const base = import.meta.env.BASE_URL;
     margin-bottom: var(--space-xs);
   }
 
-  .services__card-title {
-    font-size: 1.35rem;
-    font-weight: 600;
+  .services__card h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-family: var(--font-heading);
   }
 
-  .services__card-desc {
+  .services__card p {
+    font-size: 0.92rem;
     color: var(--color-body-dark);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.65;
+  }
+
+  .services__who {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    margin-top: auto;
+    padding-top: var(--space-sm);
+    border-top: 1px solid rgba(255,255,255,0.06);
   }
 
   .services__link {
-    font-family: var(--font-body);
     font-size: 0.85rem;
     color: var(--color-accent);
-    margin-top: auto;
+    font-weight: 600;
+    margin-top: var(--space-sm);
     transition: var(--transition);
   }
 
   .services__card:hover .services__link {
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 768px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
   }
 </style>
